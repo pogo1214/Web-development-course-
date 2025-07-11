@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML + CSS Mini Projects Workbook - باب 15</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Nafees Nastaleeq', 'Noto Nastaliq Urdu', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c5282;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #4a6baf;
+        }
+        
+        h2 {
+            color: #1a3a5f;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            background-color: #f0f7ff;
+            padding: 10px 15px;
+            border-right: 5px solid #2c5282;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .project {
+            margin-bottom: 50px;
+            padding: 25px;
+            border-radius: 12px;
+            background-color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid #4a6baf;
+        }
+        
+        .project-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .project-title i {
+            font-size: 2rem;
+            margin-left: 15px;
+            color: #4a6baf;
+        }
+        
+        .project-title h3 {
+            color: #2c5282;
+            font-size: 1.5rem;
+        }
+        
+        .project-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .explanation {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .code-example {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .code-container {
+            background-color: #2d3748;
+            color: #cbd5e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .code-tag {
+            color: #63b3ed;
+        }
+        
+        .code-attr {
+            color: #f6ad55;
+        }
+        
+        .code-text {
+            color: #a0aec0;
+        }
+        
+        .preview-container {
+            border: 1px solid #eaeaea;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .features-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .features-table th, .features-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+        
+        .features-table th {
+            background-color: #2c5282;
+            color: white;
+        }
+        
+        .features-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .practice-question {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .practice-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            color: #4a5568;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Project 1 Preview Styles */
+        .preview-body {
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .preview-card {
+            background-color: white;
+            width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .preview-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .preview-card h2 {
+            margin-top: 10px;
+            color: #333;
+        }
+        
+        .preview-card p {
+            margin: 10px 0;
+            color: #666;
+        }
+        
+        .preview-card a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        
+        .preview-card a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML + CSS Mini Projects Workbook - باب 15</h1>
+        
+        <div class="project">
+            <div class="project-title">
+                <i class="fas fa-id-card"></i>
+                <h3>Mini Project 1: Personal Info Card</h3>
+            </div>
+            
+            <div class="project-content">
+                <div class="explanation">
+                    <h4>🎨 مقصد:</h4>
+                    <p>اپنا نام، تصویر، معلومات اور لنک دکھانے والا ایک خوبصورت کارڈ بنائیں۔</p>
+                    
+                    <h4 style="margin-top: 20px;">💡 آپ اس میں کیا سیکھیں گے؟</h4>
+                    <table class="features-table">
+                        <tr>
+                            <th>فیچر</th>
+                            <th>سیکھا گیا طریقہ</th>
+                        </tr>
+                        <tr>
+                            <td>Shadow</td>
+                            <td><code>box-shadow</code> کا استعمال</td>
+                        </tr>
+                        <tr>
+                            <td>Rounded Borders</td>
+                            <td><code>border-radius</code></td>
+                        </tr>
+                        <tr>
+                            <td>Buttons & Links</td>
+                            <td>Styling with hover effect</td>
+                        </tr>
+                        <tr>
+                            <td>Text & Image</td>
+                            <td>Alignment and spacing</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="code-example">
+                    <h4>🖥️ مکمل Code:</h4>
+                    <div class="code-container">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ur"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;میرا کارڈ&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      font-family: 'Noto Nastaliq Urdu', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .card {
+      background-color: white;
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+      padding: 20px;
+    }
+    .card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    .card h2 {
+      margin-top: 10px;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: white;
+      background-color: #4CAF50;
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+    .card a:hover {
+      background-color: #45a049;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div class="card"&gt;
+    &lt;img src="https://via.placeholder.com/100" alt="میری تصویر"&gt;
+    &lt;h2&gt;آپ کا نام&lt;/h2&gt;
+    &lt;p&gt;ویب ڈویلپر، اردو لرنر&lt;/p&gt;
+    &lt;a href="#"&gt;مزید دیکھیں&lt;/a&gt;
+  &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+                    </div>
+                    
+                    <div class="preview-container">
+                        <h4>پیش منظر:</h4>
+                        <div class="preview-body">
+                            <div class="preview-card">
+                                <img src="https://via.placeholder.com/100" alt="میری تصویر">
+                                <h2>آپ کا نام</h2>
+                                <p>ویب ڈویلپر، اردو لرنر</p>
+                                <a href="#">مزید دیکھیں</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="practice-question">
+                <div class="practice-title">🧠 مشق کا سوال:</div>
+                <p><strong>خود سے کوشش کریں:</strong></p>
+                <ul style="padding-right: 20px;">
+                    <li>تصویر بدلیں</li>
+                    <li>اپنا نام لکھیں</li>
+                    <li>بٹن کے رنگ کو تبدیل کریں</li>
+                    <li>نیچے ایک اور بٹن ڈالیں (جیسے: "Contact Me")</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>HTML + CSS Mini Projects Workbook - باب 15</p>
+            <p>© 2023 ویب ڈویلپمنٹ کورس | تمام حقوق محفوظ ہیں</p>
+        </footer>
+    </div>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Website - صرف &lt;div&gt; ٹیگز کے ساتھ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Nafees Nastaleeq', 'Noto Nastaliq Urdu', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #1a3a5f, #2c5282);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 5px solid #ffc107;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .nav {
+            margin-top: 20px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #ffc107;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+            margin-left: 20px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #2c5282;
+            border-bottom: 2px solid #ffc107;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .section p, .section li {
+            font-size: 1.1rem;
+        }
+        
+        .section ul {
+            padding-right: 20px;
+        }
+        
+        .section li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .section li:before {
+            content: "•";
+            color: #ffc107;
+            font-weight: bold;
+            position: absolute;
+            right: -20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: right;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #2c5282;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        form {
+            margin-top: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c5282;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: #2c5282;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #1a3a5f;
+        }
+        
+        audio, video {
+            margin-top: 15px;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .footer {
+            background-color: #1a3a5f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .footer p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .main-content, .sidebar {
+                margin: 0 0 20px 0;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Vision ویب سائٹ</h1>
+        <div class="nav">
+            <a href="#">ہوم</a>
+            <a href="#">میرے بارے میں</a>
+            <a href="#">رابطہ</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="section">
+                <h2>میرے بارے میں</h2>
+                <p>میرا نام زین ہے، اور یہ میری Vision ویب سائٹ ہے جو صرف &lt;div&gt; ٹیگز کے استعمال سے بنائی گئی ہے۔</p>
+                <img src="https://via.placeholder.com/800x400?text=میری+تصویر" alt="میری تصویر" style="width:100%; max-width:500px; height:auto; display:block; margin:20px auto; border-radius:8px;">
+            </div>
+
+            <div class="section">
+                <h2>میری دلچسپیاں</h2>
+                <ul>
+                    <li>پروگرامنگ</li>
+                    <li>گیمنگ</li>
+                    <li>مطالعہ</li>
+                    <li>ڈیزائننگ</li>
+                    <li>سفر</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>تعلیم</h2>
+                <table>
+                    <tr>
+                        <th>درجہ</th>
+                        <th>ادارہ</th>
+                        <th>سال</th>
+                    </tr>
+                    <tr>
+                        <td>میٹرک</td>
+                        <td>سکول</td>
+                        <td>2020</td>
+                    </tr>
+                    <tr>
+                        <td>انٹرمیڈیٹ</td>
+                        <td>کالج</td>
+                        <td>2022</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>رابطہ فارم</h2>
+                <form>
+                    <label for="name">نام:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">ای میل:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="message">پیغام:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    
+                    <button type="submit">بھیجیں</button>
+                </form>
+            </div>
+
+            <div class="section">
+                <h2>آڈیو اور ویڈیو</h2>
+                <audio controls style="width:100%">
+                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                    آپ کا براؤزر آڈیو عنصر کو سپورٹ نہیں کرتا۔
+                </audio>
+                
+                <video controls style="width:100%; margin-top:20px;">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    آپ کا براؤزر ویڈیو عنصر کو سپورٹ نہیں کرتا۔
+                </video>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <h2>نوٹ</h2>
+            <p>یہ ویب سائٹ صرف &lt;div&gt; ٹیگز کے استعمال سے بنائی گئی ہے۔</p>
+            <p>اس میں کسی بھی سیمانٹک ٹیگ جیسے &lt;header&gt;, &lt;section&gt;, یا &lt;footer&gt; کا استعمال نہیں کیا گیا۔</p>
+            <p>یہ طریقہ خاص طور پر ان لوگوں کے لیے مفید ہے جو CSS کے ساتھ زیادہ کنٹرول چاہتے ہیں یا پرانے HTML کوڈ کو پڑھ رہے ہیں۔</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Vision ویب سائٹ - تمام حقوق محفوظ ہیں</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML ورک بک - باب 1 | HTML کا تعارف</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #2c3e50;
+            line-height: 1.8;
+            padding: 20px;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #e1e8ed;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #1a5fb4, #2980b9);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 5px solid #155a9e;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chapter-info {
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #2980b9;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #3498db;
+        }
+        
+        h3 {
+            color: #1a5fb4;
+            margin: 15px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: #e3f2fd;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #1a5fb4;
+        }
+        
+        .note {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .steps {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: #4caf50;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .example {
+            background: #f9fbe7;
+            border: 1px solid #d4e157;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .practice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px dashed #1a5fb4;
+        }
+        
+        .practice h2 {
+            text-align: center;
+            color: #1a5fb4;
+            border-bottom: none;
+            margin-bottom: 25px;
+        }
+        
+        .task {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .editor-container {
+            background: #2c3e50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1a252f;
+            padding: 10px 15px;
+            border-radius: 8px 8px 0 0;
+            color: #ecf0f1;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .editor-tabs {
+            display: flex;
+        }
+        
+        .editor-tab {
+            padding: 5px 15px;
+            background: #34495e;
+            margin-left: 5px;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+        }
+        
+        .editor-tab.active {
+            background: #2c3e50;
+        }
+        
+        .editor-content {
+            background: #1a252f;
+            padding: 15px;
+            border-radius: 0 0 8px 8px;
+            min-height: 200px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 180px;
+            background: #1a252f;
+            color: #ecf0f1;
+            border: none;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            resize: none;
+            border-radius: 5px;
+            direction: ltr;
+        }
+        
+        .preview {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            min-height: 150px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: #1a5fb4;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background: #155a9e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        #run-btn {
+            background: #27ae60;
+        }
+        
+        #run-btn:hover {
+            background: #219653;
+        }
+        
+        #reset-btn {
+            background: #e74c3c;
+        }
+        
+        #reset-btn:hover {
+            background: #c0392b;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #f1f8ff;
+            color: #1a5fb4;
+            font-size: 1.1rem;
+            border-top: 1px solid #d1e8ff;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            section {
+                padding: 20px 15px;
+            }
+            
+            .editor-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML ورک بک</h1>
+            <div class="chapter-info">باب 1: HTML کا تعارف اور ویب کیسے کام کرتی ہے</div>
+        </header>
+        
+        <div class="content">
+            <section id="what-is-html">
+                <h2>❓ HTML کیا ہے؟</h2>
+                <p><span class="highlight">HTML</span> کا مطلب ہے: <span class="highlight">HyperText Markup Language</span></p>
+                <p>یہ ایک ایسی زبان ہے جس کی مدد سے ہم ویب پیجز (Web Pages) بناتے ہیں۔ HTML ویب سائٹ کا "ڈھانچہ" (Structure) تیار کرتی ہے۔</p>
+            </section>
+            
+            <section id="html-function">
+                <h2>📂 HTML کیا کام کرتا ہے؟</h2>
+                <ul>
+                    <li>ویب پیج پر <span class="highlight">سرخیاں</span>، <span class="highlight">پیراگراف</span>، <span class="highlight">تصاویر</span> اور <span class="highlight">لنکس</span> لگاتا ہے</li>
+                    <li>صارف کے لیے چیزیں <span class="highlight">نظر آنے والی</span> بناتا ہے</li>
+                    <li>ویب سائٹ کے مختلف حصوں کو ترتیب دیتا ہے</li>
+                </ul>
+                
+                <div class="note">
+                    <h3>🧠 یاد رکھیں:</h3>
+                    <p>HTML خود "کام" (function) نہیں کرتا، وہ صرف صفحے کا ڈھانچہ بناتا ہے۔ اصل حرکت (design یا activity) CSS اور JavaScript سے آتی ہے۔</p>
+                </div>
+            </section>
+            
+            <section id="how-web-works">
+                <h2>🖥️ ویب کیسے کام کرتا ہے؟ (سادہ زبان میں)</h2>
+                <p>جب آپ Google Chrome یا کوئی بھی Browser کھول کر <span class="highlight">www.example.com</span> لکھتے ہیں تو کیا ہوتا ہے؟</p>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div><span class="highlight">Browser</span> آپ کے URL کو <span class="highlight">Internet پر بھیجتا</span> ہے</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div><span class="highlight">Web Server</span> سے HTML فائل واپس آتی ہے</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div><span class="highlight">Browser</span> HTML کو پڑھتا ہے اور ایک خوبصورت صفحے کی شکل میں آپ کو دکھاتا ہے</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="html-example">
+                <h2>📦 مثال سمجھیں:</h2>
+                <p>جب کوئی شخص HTML میں یہ کوڈ لکھے:</p>
+                
+                <div class="code-block">
+&lt;h1&gt;میری پہلی ویب سائٹ&lt;/h1&gt;<br>
+&lt;p&gt;یہ ایک پیراگراف ہے۔&lt;/p&gt;
+                </div>
+                
+                <p>Browser اسے کچھ یوں دکھاتا ہے:</p>
+                
+                <div class="example">
+                    <h3>میری پہلی ویب سائٹ</h3>
+                    <p>یہ ایک پیراگراف ہے۔</p>
+                </div>
+            </section>
+            
+            <section id="create-file">
+                <h2>🔁 HTML کی فائل کیسے بناتے ہیں؟</h2>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div><span class="highlight">Notepad</span> یا <span class="highlight">VS Code</span> کھولیں</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div>کوڈ لکھیں</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div><span class="highlight">Save کریں `.html` کے ساتھ</span><br>مثال: <span class="highlight">index.html</span></div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div>File پر double-click کریں، Browser میں کھل جائے گی!</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="practice">
+                <h2>📚 اس باب کے مشقیں</h2>
+                
+                <div class="task">
+                    <h3>مشق 1:</h3>
+                    <p>ایک صفحہ بنائیں جس میں صرف "میری پہلی ویب سائٹ" heading ہو</p>
+                </div>
+                
+                <div class="task">
+                    <h3>مشق 2:</h3>
+                    <p>اس کے نیچے ایک پیراگراف ہو جس میں آپ اپنے بارے میں دو لائنیں لکھیں</p>
+                </div>
+                
+                <div class="task">
+                    <h3>مشق 3:</h3>
+                    <p>فائل کو `.html` میں محفوظ کریں اور Browser میں کھول کر دیکھیں</p>
+                </div>
+                
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <div class="editor-tabs">
+                            <div class="editor-tab active">index.html</div>
+                        </div>
+                        <div>HTML ایڈیٹر</div>
+                    </div>
+                    <div class="editor-content">
+                        <textarea id="html-editor">&lt;!DOCTYPE html&gt;
+&lt;html lang="ur" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;میری پہلی ویب سائٹ&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- اپنا کوڈ یہاں لکھیں --&gt;
+    &lt;h1&gt;میری پہلی ویب سائٹ&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                    </div>
+                </div>
+                
+                <div class="preview">
+                    <h3>نتائج کا پیش نظارہ:</h3>
+                    <div id="preview-output">
+                        <!-- Preview will be rendered here -->
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button id="run-btn">کوڈ چلائیں</button>
+                    <button id="reset-btn">دوبارہ شروع کریں</button>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>HTML ورک بک - باب 1 | تیار کردہ: DeepSeek-R1</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const htmlEditor = document.getElementById('html-editor');
+            const previewOutput = document.getElementById('preview-output');
+            const runBtn = document.getElementById('run-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            
+            // Initial preview
+            updatePreview();
+            
+            // Run button click event
+            runBtn.addEventListener('click', updatePreview);
+            
+            // Reset button click event
+            resetBtn.addEventListener('click', function() {
+                htmlEditor.value = `<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>میری پہلی ویب سائٹ</title>
+</head>
+<body>
+    <!-- اپنا کوڈ یہاں لکھیں -->
+    <h1>میری پہلی ویب سائٹ</h1>
+</body>
+</html>`;
+                updatePreview();
+            });
+            
+            // Update preview function
+            function updatePreview() {
+                const htmlCode = htmlEditor.value;
+                previewOutput.innerHTML = htmlCode;
+                
+                // Execute script tags if any
+                const scripts = previewOutput.getElementsByTagName('script');
+                for (let i = 0; i < scripts.length; i++) {
+                    try {
+                        eval(scripts[i].innerHTML);
+                    } catch (e) {
+                        console.error('Error executing script:', e);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

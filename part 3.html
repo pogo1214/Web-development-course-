@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML ورک بک - باب 3 | Text Tags</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #2c3e50;
+            line-height: 1.8;
+            padding: 20px;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #e1e8ed;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #1a5fb4, #2980b9);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 5px solid #155a9e;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chapter-info {
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #2980b9;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #3498db;
+        }
+        
+        h3 {
+            color: #1a5fb4;
+            margin: 15px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: #e3f2fd;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #1a5fb4;
+        }
+        
+        .note {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .example {
+            background: #f9fbe7;
+            border: 1px solid #d4e157;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .practice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px dashed #1a5fb4;
+        }
+        
+        .practice h2 {
+            text-align: center;
+            color: #1a5fb4;
+            border-bottom: none;
+            margin-bottom: 25px;
+        }
+        
+        .task {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .editor-container {
+            background: #2c3e50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1a252f;
+            padding: 10px 15px;
+            border-radius: 8px 8px 0 0;
+            color: #ecf0f1;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .editor-tabs {
+            display: flex;
+        }
+        
+        .editor-tab {
+            padding: 5px 15px;
+            background: #34495e;
+            margin-left: 5px;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+        }
+        
+        .editor-tab.active {
+            background: #2c3e50;
+        }
+        
+        .editor-content {
+            background: #1a252f;
+            padding: 15px;
+            border-radius: 0 0 8px 8px;
+            min-height: 200px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 180px;
+            background: #1a252f;
+            color: #ecf0f1;
+            border: none;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            resize: none;
+            border-radius: 5px;
+            direction: ltr;
+        }
+        
+        .preview {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            min-height: 150px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: #1a5fb4;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background: #155a9e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        #run-btn {
+            background: #27ae60;
+        }
+        
+        #run-btn:hover {
+            background: #219653;
+        }
+        
+        #reset-btn {
+            background: #e74c3c;
+        }
+        
+        #reset-btn:hover {
+            background: #c0392b;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #f1f8ff;
+            color: #1a5fb4;
+            font-size: 1.1rem;
+            border-top: 1px solid #d1e8ff;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            section {
+                padding: 20px 15px;
+            }
+            
+            .editor-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML ورک بک</h1>
+            <div class="chapter-info">باب 3: Text Tags – Headings, Paragraphs, Line Break</div>
+        </header>
+        
+        <div class="content">
+            <section id="headings">
+                <h2>🏷️ 1. Headings Tags (<code>&lt;h1&gt;</code> سے <code>&lt;h6&gt;</code>)</h2>
+                <p><strong>Headings</strong> (سرخیاں) ویب پیج میں عنوانات (Titles) کو ظاہر کرنے کے لیے استعمال ہوتی ہیں۔</p>
+                
+                <h3>✅ HTML میں 6 قسم کی Headings ہوتی ہیں:</h3>
+                <div class="code-block">
+&lt;h1&gt;یہ سب سے بڑی heading ہے&lt;/h1&gt;
+&lt;h2&gt;یہ دوسری بڑی heading ہے&lt;/h2&gt;
+&lt;h3&gt;یہ تیسری بڑی heading ہے&lt;/h3&gt;
+&lt;h4&gt;یہ چوتھی بڑی heading ہے&lt;/h4&gt;
+&lt;h5&gt;یہ پانچویں بڑی heading ہے&lt;/h5&gt;
+&lt;h6&gt;یہ سب سے چھوٹی heading ہے&lt;/h6&gt;
+                </div>
+                
+                <div class="note">
+                    <h3>📌 یاد رکھیں:</h3>
+                    <ul>
+                        <li>SEO (گوگل سرچ) میں <code>&lt;h1&gt;</code> بہت اہم ہوتی ہے</li>
+                        <li>ہر صفحے میں صرف ایک <code>&lt;h1&gt;</code> ہونا بہتر ہے</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="paragraph">
+                <h2>📝 2. Paragraph Tag (<code>&lt;p&gt;</code>)</h2>
+                <p><strong>Paragraph</strong> ایک مکمل جملہ یا پیراگراف ظاہر کرتا ہے۔</p>
+                
+                <h3>✅ مثال:</h3>
+                <div class="code-block">
+&lt;p&gt;میرا نام علی ہے۔ میں ویب ڈویلپمنٹ سیکھ رہا ہوں۔&lt;/p&gt;
+                </div>
+                
+                <h3>📌 فائدہ:</h3>
+                <p>ایک بات کو الگ پیراگراف میں لکھنا واضح اور آسان بناتا ہے</p>
+            </section>
+            
+            <section id="line-break">
+                <h2>🔁 3. Line Break (<code>&lt;br&gt;</code>)</h2>
+                <p><strong>Line Break</strong> ایک لائن کو توڑنے کے لیے استعمال ہوتا ہے، یعنی ایک ہی پیراگراف میں نئی لائن شروع کرنے کے لیے۔</p>
+                
+                <h3>✅ مثال:</h3>
+                <div class="code-block">
+&lt;p&gt;یہ پہلی لائن ہے۔&lt;br&gt;یہ دوسری لائن ہے۔&lt;/p&gt;
+                </div>
+                
+                <div class="note">
+                    <h3>📌 نوٹ:</h3>
+                    <ul>
+                        <li><code>&lt;br&gt;</code> self-closing tag ہے، اس کا اختتام نہیں ہوتا</li>
+                        <li>صرف جب آپ کو نئی لائن بنانی ہو تو استعمال کریں</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="complete-example">
+                <h2>🌟 مکمل مثال:</h2>
+                <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Text Tags Example&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;ہیڈنگ 1&lt;/h1&gt;
+    &lt;h2&gt;ہیڈنگ 2&lt;/h2&gt;
+    &lt;p&gt;یہ ایک پیراگراف ہے۔&lt;br&gt;یہ نئی لائن ہے اسی پیراگراف میں۔&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+                </div>
+            </section>
+            
+            <section class="practice">
+                <h2>🧪 مشقیں:</h2>
+                
+                <div class="task">
+                    <h3>مشق 1:</h3>
+                    <p>ایک HTML فائل بنائیں جس میں:</p>
+                    <ul>
+                        <li><code>&lt;h1&gt;</code> میں آپ کی پسندیدہ کتاب کا نام ہو</li>
+                        <li>دو <code>&lt;p&gt;</code> ہوں: ایک میں کتاب کا تعارف اور دوسرے میں آپ کی رائے</li>
+                        <li>ایک <code>&lt;br&gt;</code> لگا کر کسی لائن کو توڑیں</li>
+                    </ul>
+                </div>
+                
+                <div class="task">
+                    <h3>مشق 2:</h3>
+                    <p>Browser میں چلا کر نتیجہ دیکھیں</p>
+                </div>
+                
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <div class="editor-tabs">
+                            <div class="editor-tab active">index.html</div>
+                        </div>
+                        <div>HTML ایڈیٹر</div>
+                    </div>
+                    <div class="editor-content">
+                        <textarea id="html-editor">&lt;!DOCTYPE html&gt;
+&lt;html lang="ur" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;میری پسندیدہ کتاب&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- اپنا کوڈ یہاں لکھیں --&gt;
+    &lt;h1&gt;کتاب کا نام یہاں لکھیں&lt;/h1&gt;
+    &lt;p&gt;کتاب کا تعارف یہاں لکھیں&lt;/p&gt;
+    &lt;p&gt;میری رائے یہاں لکھیں&lt;br&gt;دوسری لائن میں مزید رائے&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                    </div>
+                </div>
+                
+                <div class="preview">
+                    <h3>نتائج کا پیش نظارہ:</h3>
+                    <div id="preview-output">
+                        <!-- Preview will be rendered here -->
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button id="run-btn">کوڈ چلائیں</button>
+                    <button id="reset-btn">دوبارہ شروع کریں</button>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>HTML ورک بک - باب 3 | تیار کردہ: DeepSeek-R1</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const htmlEditor = document.getElementById('html-editor');
+            const previewOutput = document.getElementById('preview-output');
+            const runBtn = document.getElementById('run-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            
+            // Initial preview
+            updatePreview();
+            
+            // Run button click event
+            runBtn.addEventListener('click', updatePreview);
+            
+            // Reset button click event
+            resetBtn.addEventListener('click', function() {
+                htmlEditor.value = `<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>میری پسندیدہ کتاب</title>
+</head>
+<body>
+    <!-- اپنا کوڈ یہاں لکھیں -->
+    <h1>کتاب کا نام یہاں لکھیں</h1>
+    <p>کتاب کا تعارف یہاں لکھیں</p>
+    <p>میری رائے یہاں لکھیں<br>دوسری لائن میں مزید رائے</p>
+</body>
+</html>`;
+                updatePreview();
+            });
+            
+            // Update preview function
+            function updatePreview() {
+                const htmlCode = htmlEditor.value;
+                previewOutput.innerHTML = htmlCode;
+                
+                // Execute script tags if any
+                const scripts = previewOutput.getElementsByTagName('script');
+                for (let i = 0; i < scripts.length; i++) {
+                    try {
+                        eval(scripts[i].innerHTML);
+                    } catch (e) {
+                        console.error('Error executing script:', e);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

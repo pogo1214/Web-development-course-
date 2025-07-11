@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفہیم &lt;div&gt; ٹیگ اور HTML سیمانٹک ٹیگز</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Nafees Nastaleeq', 'Noto Nastaliq Urdu', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(90deg, #1a3a5f, #2c5282);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .card-header i {
+            font-size: 2.5rem;
+            margin-left: 15px;
+            color: #2c5282;
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            color: #1a3a5f;
+        }
+        
+        .card-content {
+            font-size: 1.15rem;
+        }
+        
+        .card-content ul {
+            padding-right: 25px;
+            margin: 15px 0;
+        }
+        
+        .card-content li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .card-content li:before {
+            content: "•";
+            color: #2c5282;
+            font-weight: bold;
+            position: absolute;
+            right: -20px;
+        }
+        
+        .comparison {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            overflow-x: auto;
+        }
+        
+        .comparison h2 {
+            text-align: center;
+            color: #1a3a5f;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        th, td {
+            padding: 16px 20px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background: #2c5282;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .semantic-cell {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .div-cell {
+            background-color: #ffebee;
+            color: #c62828;
+            font-weight: bold;
+        }
+        
+        .example-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .example {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+        
+        .example h2 {
+            color: #1a3a5f;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .code-container {
+            background: #2d3748;
+            color: #cbd5e0;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+        
+        .code-tag {
+            color: #63b3ed;
+        }
+        
+        .code-attr {
+            color: #f6ad55;
+        }
+        
+        .code-comment {
+            color: #a0aec0;
+            font-style: italic;
+        }
+        
+        .code-text {
+            color: #a0aec0;
+        }
+        
+        .result-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            margin-top: 15px;
+        }
+        
+        .conclusion {
+            background: linear-gradient(90deg, #2c5282, #1a3a5f);
+            color: white;
+            border-radius: 15px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .conclusion h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+        
+        .conclusion-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .tip-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #4a5568;
+            font-size: 1.1rem;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-code"></i> تفہیم &lt;div&gt; ٹیگ اور HTML سیمانٹک ٹیگز</h1>
+            <p class="subtitle">ویب ڈویلپمنٹ میں بنیادی فرق، استعمال کے طریقے، اور بہترین طریقہ کار</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-cube"></i>
+                    <h2 class="card-title">&lt;div&gt; ٹیگ کیا ہے؟</h2>
+                </div>
+                <div class="card-content">
+                    <p><strong>&lt;div&gt;</strong> کا مطلب ہے "ڈویژن" یعنی کسی صفحے کے حصہ یا بلاک کو الگ کرنا۔</p>
+                    
+                    <ul>
+                        <li>یہ ایک <strong>غیر سیمانٹک (Non-Semantic) ٹیگ</strong> ہے</li>
+                        <li>یہ خود سے نہیں بتاتا کہ اندر کیا مواد ہے</li>
+                        <li>بنیادی طور پر ایک <strong>کنٹینر</strong> کے طور پر کام کرتا ہے</li>
+                        <li>CSS سٹائلنگ اور JavaScript کے لیے بہترین ہے</li>
+                        <li>ویب پیج کے لیے ڈھانچہ (structure) بنانے میں مدد کرتا ہے</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-sitemap"></i>
+                    <h2 class="card-title">سیمانٹک ٹیگز کیا ہیں؟</h2>
+                </div>
+                <div class="card-content">
+                    <p><strong>سیمانٹک ٹیگز</strong> اپنے نام سے ہی اپنا مقصد ظاہر کرتے ہیں۔</p>
+                    
+                    <ul>
+                        <li>یہ براؤزرز اور سرچ انجنز کو مواد کی ساخت سمجھنے میں مدد کرتے ہیں</li>
+                        <li>ویب سائٹ کی رسائی (accessibility) بہتر بناتے ہیں</li>
+                        <li>کوڈ کو پڑھنا اور سمجھنا آسان بناتے ہیں</li>
+                        <li>جدید HTML5 کا اہم حصہ ہیں</li>
+                        <li>مثال: &lt;header&gt;, &lt;footer&gt;, &lt;article&gt;, &lt;section&gt;</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-question-circle"></i>
+                    <h2 class="card-title">&lt;div&gt; کب استعمال کریں؟</h2>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>جب آپ کو کئی عناصر کو <strong>ایک ساتھ گروپ</strong> کرنا ہو</li>
+                        <li>جب آپ CSS سے <strong>سٹائل</strong> دینا چاہتے ہوں</li>
+                        <li>جب JavaScript کے ذریعے <strong>منطق (logic)</strong> لاگو کرنی ہو</li>
+                        <li>جب کوئی مناسب سیمانٹک ٹیگ دستیاب نہ ہو</li>
+                        <li>پیج کے <strong>لیآؤٹ</strong> کی تشکیل کے لیے</li>
+                    </ul>
+                    
+                    <div class="tip-box">
+                        <i class="fas fa-lightbulb"></i> ٹپ: جدید HTML میں پہلے مناسب سیمانٹک ٹیگ استعمال کریں، پھر &lt;div&gt; کا استعمال کریں
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison">
+            <h2><i class="fas fa-balance-scale"></i> سیمانٹک ٹیگز اور &lt;div&gt; کا موازنہ</h2>
+            <table>
+                <tr>
+                    <th>کام</th>
+                    <th>سیمانٹک ٹیگ</th>
+                    <th>&lt;div&gt; متبادل</th>
+                </tr>
+                <tr>
+                    <td>صفحہ کا سربراہ</td>
+                    <td class="semantic-cell">&lt;header&gt;</td>
+                    <td class="div-cell">&lt;div class="header"&gt;</td>
+                </tr>
+                <tr>
+                    <td>صفحہ کا پاورقی</td>
+                    <td class="semantic-cell">&lt;footer&gt;</td>
+                    <td class="div-cell">&lt;div class="footer"&gt;</td>
+                </tr>
+                <tr>
+                    <td>مرکزی مواد</td>
+                    <td class="semantic-cell">&lt;main&gt;</td>
+                    <td class="div-cell">&lt;div class="main"&gt;</td>
+                </tr>
+                <tr>
+                    <td>مضامین کا حصہ</td>
+                    <td class="semantic-cell">&lt;article&gt;</td>
+                    <td class="div-cell">&lt;div class="article"&gt;</td>
+                </tr>
+                <tr>
+                    <td>سیکشن</td>
+                    <td class="semantic-cell">&lt;section&gt;</td>
+                    <td class="div-cell">&lt;div class="section"&gt;</td>
+                </tr>
+                <tr>
+                    <td>ناویگیشن</td>
+                    <td class="semantic-cell">&lt;nav&gt;</td>
+                    <td class="div-cell">&lt;div class="nav"&gt;</td>
+                </tr>
+                <tr>
+                    <td>اضافی معلومات</td>
+                    <td class="semantic-cell">&lt;aside&gt;</td>
+                    <td class="div-cell">&lt;div class="sidebar"&gt;</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="example-section">
+            <div class="example">
+                <h2><i class="fas fa-code"></i> &lt;div&gt; کے ساتھ کوڈ مثال</h2>
+                <div class="code-container">
+                    <span class="code-tag">&lt;div</span> <span class="code-attr">class=</span><span class="code-text">"profile"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;div</span> <span class="code-attr">class=</span><span class="code-text">"header"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h2&gt;</span>میرا تعارف<span class="code-tag">&lt;/h2&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;/div&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;div</span> <span class="code-attr">class=</span><span class="code-text">"content"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>میرا نام علی ہے اور میں HTML سیکھ رہا ہوں۔<span class="code-tag">&lt;/p&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;/div&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;div</span> <span class="code-attr">class=</span><span class="code-text">"footer"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>ای میل: ali@example.com<span class="code-tag">&lt;/p&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;/div&gt;</span><br>
+                    <span class="code-tag">&lt;/div&gt;</span>
+                </div>
+                
+                <div class="result-container">
+                    <h3>نتیجہ:</h3>
+                    <div style="border: 2px solid #c62828; padding: 15px; margin-top: 10px; border-radius: 8px;">
+                        <div style="background: #ffebee; padding: 10px; margin-bottom: 10px;">
+                            <h2 style="color: #c62828; margin: 0;">میرا تعارف</h2>
+                        </div>
+                        <div style="padding: 10px; margin-bottom: 10px;">
+                            <p>میرا نام علی ہے اور میں HTML سیکھ رہا ہوں۔</p>
+                        </div>
+                        <div style="background: #ffebee; padding: 10px;">
+                            <p>ای میل: ali@example.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h2><i class="fas fa-code"></i> سیمانٹک ٹیگز کے ساتھ کوڈ مثال</h2>
+                <div class="code-container">
+                    <span class="code-tag">&lt;article&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;header&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h2&gt;</span>میرا تعارف<span class="code-tag">&lt;/h2&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;/header&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;section&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>میرا نام علی ہے اور میں HTML سیکھ رہا ہوں۔<span class="code-tag">&lt;/p&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;/section&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;footer&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>ای میل: ali@example.com<span class="code-tag">&lt;/p&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;/footer&gt;</span><br>
+                    <span class="code-tag">&lt;/article&gt;</span>
+                </div>
+                
+                <div class="result-container">
+                    <h3>نتیجہ:</h3>
+                    <article style="border: 2px solid #2e7d32; padding: 15px; margin-top: 10px; border-radius: 8px;">
+                        <header style="background: #e8f5e9; padding: 10px; margin-bottom: 10px;">
+                            <h2 style="color: #2e7d32; margin: 0;">میرا تعارف</h2>
+                        </header>
+                        <section style="padding: 10px; margin-bottom: 10px;">
+                            <p>میرا نام علی ہے اور میں HTML سیکھ رہا ہوں۔</p>
+                        </section>
+                        <footer style="background: #e8f5e9; padding: 10px;">
+                            <p>ای میل: ali@example.com</p>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </div>
+        
+        <div class="conclusion">
+            <h2><i class="fas fa-graduation-cap"></i> نتیجہ اور بہترین طریقہ کار</h2>
+            <div class="conclusion-content">
+                <p><strong>جدید ویب ڈویلپمنٹ</strong> میں سیمانٹک ٹیگز کو ترجیح دیں کیونکہ یہ:</p>
+                <p>• ویب سائٹ کی رسائی (accessibility) بہتر بناتے ہیں<br>
+                • سرچ انجن آپٹیمائزیشن (SEO) میں مددگار ہیں<br>
+                • کوڈ کو پڑھنا اور برقرار رکھنا آسان بناتے ہیں</p>
+                
+                <p><strong>&lt;div&gt; ٹیگ</strong> استعمال کریں جب:</p>
+                <p>• آپ کو CSS یا JavaScript کے ذریعے سٹائلنگ یا فعالیت شامل کرنی ہو<br>
+                • کوئی مناسب سیمانٹک ٹیگ دستیاب نہ ہو<br>
+                • آپ عناصر کو گروپ کرنا چاہتے ہوں</p>
+                
+                <p>بہترین طریقہ: سیمانٹک ٹیگز کے ساتھ ڈھانچہ بنائیں، اور &lt;div&gt; کو سٹائلنگ اور لیآؤٹ کے لیے استعمال کریں!</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>تشکیل: &lt;div&gt; ٹیگ اور سیمانٹک ٹیگز کی تفہیم | جدید ویب ڈویلپمنٹ</p>
+            <p>© 2023 HTML تعلیمی مواد - تمام حقوق محفوظ ہیں</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add subtle animation to cards when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 150);
+            });
+        });
+    </script>
+</body>
+</html>

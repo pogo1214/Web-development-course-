@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML ورک بک - باب 9 | HTML Semantic Tags</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #2c3e50;
+            line-height: 1.8;
+            padding: 20px;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #e1e8ed;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #1a5fb4, #2980b9);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 5px solid #155a9e;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chapter-info {
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #2980b9;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #3498db;
+        }
+        
+        h3 {
+            color: #1a5fb4;
+            margin: 15px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: #e3f2fd;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #1a5fb4;
+        }
+        
+        .note {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .example {
+            background: #f9fbe7;
+            border: 1px solid #d4e157;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .practice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px dashed #1a5fb4;
+        }
+        
+        .practice h2 {
+            text-align: center;
+            color: #1a5fb4;
+            border-bottom: none;
+            margin-bottom: 25px;
+        }
+        
+        .task {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+        
+        th {
+            background: #1a5fb4;
+            color: white;
+            padding: 12px;
+            text-align: right;
+        }
+        
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+        
+        .semantic-example {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .semantic-example header {
+            background: #1a5fb4;
+            color: white;
+            padding: 20px;
+        }
+        
+        .semantic-example nav {
+            background: #2980b9;
+            padding: 10px;
+        }
+        
+        .semantic-example nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .semantic-example main {
+            padding: 20px;
+            background: white;
+        }
+        
+        .semantic-example section {
+            background: #f8fafc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .semantic-example article {
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+        
+        .semantic-example aside {
+            background: #e3f2fd;
+            padding: 15px;
+            border-left: 5px solid #1a5fb4;
+        }
+        
+        .semantic-example footer {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .editor-container {
+            background: #2c3e50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1a252f;
+            padding: 10px 15px;
+            border-radius: 8px 8px 0 0;
+            color: #ecf0f1;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .editor-tabs {
+            display: flex;
+        }
+        
+        .editor-tab {
+            padding: 5px 15px;
+            background: #34495e;
+            margin-left: 5px;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+        }
+        
+        .editor-tab.active {
+            background: #2c3e50;
+        }
+        
+        .editor-content {
+            background: #1a252f;
+            padding: 15px;
+            border-radius: 0 0 8px 8px;
+            min-height: 200px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 180px;
+            background: #1a252f;
+            color: #ecf0f1;
+            border: none;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            resize: none;
+            border-radius: 5px;
+            direction: ltr;
+        }
+        
+        .preview {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            min-height: 150px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: #1a5fb4;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background: #155a9e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        #run-btn {
+            background: #27ae60;
+        }
+        
+        #run-btn:hover {
+            background: #219653;
+        }
+        
+        #reset-btn {
+            background: #e74c3c;
+        }
+        
+        #reset-btn:hover {
+            background: #c0392b;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #f1f8ff;
+            color: #1a5fb4;
+            font-size: 1.1rem;
+            border-top: 1px solid #d1e8ff;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            section {
+                padding: 20px 15px;
+            }
+            
+            .editor-container {
+                padding: 10px;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML ورک بک</h1>
+            <div class="chapter-info">باب 9: HTML Semantic Tags – سمجھ دار (معنی خیز) ٹیگز</div>
+        </header>
+        
+        <div class="content">
+            <section id="what-are-semantic-tags">
+                <h2>🧠 Semantic Tags کیا ہوتے ہیں؟</h2>
+                <p><strong>Semantic HTML Tags</strong> وہ ہوتے ہیں جو اپنے <strong>نام سے ہی بتا دیتے ہیں کہ ان کا کام کیا ہے۔</strong> یہ Tags کوڈ کو زیادہ واضح اور SEO-friendly بناتے ہیں۔</p>
+            </section>
+            
+            <section id="semantic-vs-non-semantic">
+                <h2>📦 Semantic اور Non-Semantic Tags کا فرق:</h2>
+                
+                <table>
+                    <tr>
+                        <th>Non-Semantic Tag</th>
+                        <th>مطلب نہیں بتاتا</th>
+                        <th>مثال</th>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;div&gt;</code>, <code>&lt;span&gt;</code></td>
+                        <td>کوئی خاص معنی نہیں</td>
+                        <td>صرف ڈیزائن کے لیے استعمال ہوتے ہیں</td>
+                    </tr>
+                    <tr>
+                        <th>Semantic Tag</th>
+                        <th>خود ہی بتاتا ہے</th>
+                        <th>مثال</th>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code></td>
+                        <td>اپنا کام بتاتے ہیں</td>
+                        <td>ویب پیج کے حصوں کو واضح کرتے ہیں</td>
+                    </tr>
+                </table>
+            </section>
+            
+            <section id="important-semantic-tags">
+                <h2>✅ اہم Semantic Tags اور ان کے استعمال:</h2>
+                
+                <table>
+                    <tr>
+                        <th>Tag</th>
+                        <th>اردو میں مطلب</th>
+                        <th>کام</th>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;header&gt;</code></td>
+                        <td>سرخی/شروع کی جگہ</td>
+                        <td>ویب پیج کی ہیڈر یا عنوان کے لیے</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;nav&gt;</code></td>
+                        <td>نیویگیشن</td>
+                        <td>لنکس یا مینیو کے لیے</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;main&gt;</code></td>
+                        <td>مرکزی حصہ</td>
+                        <td>ویب پیج کا مین کانٹینٹ</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;section&gt;</code></td>
+                        <td>سیکشن</td>
+                        <td>ویب پیج کا حصہ یا باب</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;article&gt;</code></td>
+                        <td>آرٹیکل</td>
+                        <td>مکمل پوسٹ، بلاگ یا نیوز آئٹم</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;aside&gt;</code></td>
+                        <td>سائیڈ بار/نوٹس</td>
+                        <td>سائڈ میں دی گئی معلومات</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;footer&gt;</code></td>
+                        <td>آخر/نیچے کا حصہ</td>
+                        <td>ویب پیج کے آخر میں انفارمیشن</td>
+                    </tr>
+                </table>
+            </section>
+            
+            <section id="simple-example">
+                <h2>🧾 سادہ Semantic Layout کی مثال:</h2>
+                <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Semantic Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;header&gt;
+      &lt;h1&gt;میری ویب سائٹ&lt;/h1&gt;
+      &lt;nav&gt;
+        &lt;a href="#"&gt;Home&lt;/a&gt; |
+        &lt;a href="#"&gt;About&lt;/a&gt; |
+        &lt;a href="#"&gt;Contact&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Welcome&lt;/h2&gt;
+        &lt;p&gt;یہ ایک مثال ہے semantic HTML کی۔&lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;article&gt;
+        &lt;h3&gt;میرا پہلا مضمون&lt;/h3&gt;
+        &lt;p&gt;یہ ایک آرٹیکل ہے جس میں مکمل انفارمیشن دی گئی ہے۔&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/main&gt;
+
+    &lt;aside&gt;
+      &lt;h4&gt;نوٹس&lt;/h4&gt;
+      &lt;p&gt;یہ سائیڈ انفارمیشن ہے۔&lt;/p&gt;
+    &lt;/aside&gt;
+
+    &lt;footer&gt;
+      &lt;p&gt;© 2025 میری ویب سائٹ&lt;/p&gt;
+    &lt;/footer&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+                </div>
+                
+                <h3>🖼️ نتیجہ:</h3>
+                <div class="semantic-example">
+                    <header>
+                        <h1>میری ویب سائٹ</h1>
+                        <nav>
+                            <a href="#">Home</a> |
+                            <a href="#">About</a> |
+                            <a href="#">Contact</a>
+                        </nav>
+                    </header>
+
+                    <main>
+                        <section>
+                            <h2>Welcome</h2>
+                            <p>یہ ایک مثال ہے semantic HTML کی۔</p>
+                        </section>
+
+                        <article>
+                            <h3>میرا پہلا مضمون</h3>
+                            <p>یہ ایک آرٹیکل ہے جس میں مکمل انفارمیشن دی گئی ہے۔</p>
+                        </article>
+                    </main>
+
+                    <aside>
+                        <h4>نوٹس</h4>
+                        <p>یہ سائیڈ انفارمیشن ہے۔</p>
+                    </aside>
+
+                    <footer>
+                        <p>© 2025 میری ویب سائٹ</p>
+                    </footer>
+                </div>
+            </section>
+            
+            <section id="why-important">
+                <h2>🎯 کیوں ضروری ہیں Semantic Tags؟</h2>
+                <ul>
+                    <li>سرچ انجن (Google) بہتر سمجھتا ہے کہ کونسا حصہ کیا ہے</li>
+                    <li>یوزرز کو سمجھنے میں آسانی ہوتی ہے</li>
+                    <li>سکرین ریڈرز اور accessibility tools کے لیے بہتر ہوتے ہیں</li>
+                    <li>کوڈ کو منظم اور پڑھنے میں آسان بناتے ہیں</li>
+                    <li>ویب سائٹ کی structure واضح ہوتی ہے</li>
+                </ul>
+            </section>
+            
+            <section class="practice">
+                <h2>🧪 مشق:</h2>
+                
+                <div class="task">
+                    <h3>مشق 1:</h3>
+                    <p>ایک ویب پیج بنائیں جس میں:</p>
+                    <ul>
+                        <li><code>&lt;header&gt;</code> میں عنوان اور مینیو</li>
+                        <li><code>&lt;main&gt;</code> میں کم از کم 1 <code>&lt;section&gt;</code> اور 1 <code>&lt;article&gt;</code></li>
+                        <li><code>&lt;aside&gt;</code> میں ایک نوٹ</li>
+                        <li><code>&lt;footer&gt;</code> میں کاپی رائٹ انفارمیشن</li>
+                    </ul>
+                </div>
+                
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <div class="editor-tabs">
+                            <div class="editor-tab active">index.html</div>
+                        </div>
+                        <div>HTML ایڈیٹر</div>
+                    </div>
+                    <div class="editor-content">
+                        <textarea id="html-editor">&lt;!DOCTYPE html&gt;
+&lt;html lang="ur" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;میری Semantic ویب سائٹ&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- اپنا کوڈ یہاں لکھیں --&gt;
+    &lt;header&gt;
+        &lt;h1&gt;میری ویب سائٹ&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="#"&gt;ہوم&lt;/a&gt; |
+            &lt;a href="#"&gt;ہمارے بارے میں&lt;/a&gt; |
+            &lt;a href="#"&gt;رابطہ&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;h2&gt;خوش آمدید&lt;/h2&gt;
+            &lt;p&gt;یہ ایک سیکشن ہے جس میں آپ کا استقبال کیا جاتا ہے۔&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;article&gt;
+            &lt;h3&gt;میرا پہلا بلاگ پوسٹ&lt;/h3&gt;
+            &lt;p&gt;یہاں میں اپنے خیالات شیئر کر رہا ہوں۔&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+
+    &lt;aside&gt;
+        &lt;h4&gt;مزید معلومات&lt;/h4&gt;
+        &lt;p&gt;یہاں کچھ اضافی معلومات دی گئی ہیں۔&lt;/p&gt;
+    &lt;/aside&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;© 2025 میری ویب سائٹ - تمام حقوق محفوظ ہیں&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                    </div>
+                </div>
+                
+                <div class="preview">
+                    <h3>نتائج کا پیش نظارہ:</h3>
+                    <div id="preview-output">
+                        <!-- Preview will be rendered here -->
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button id="run-btn">کوڈ چلائیں</button>
+                    <button id="reset-btn">دوبارہ شروع کریں</button>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>HTML ورک بک - باب 9 | تیار کردہ: DeepSeek-R1</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const htmlEditor = document.getElementById('html-editor');
+            const previewOutput = document.getElementById('preview-output');
+            const runBtn = document.getElementById('run-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            
+            // Initial preview
+            updatePreview();
+            
+            // Run button click event
+            runBtn.addEventListener('click', updatePreview);
+            
+            // Reset button click event
+            resetBtn.addEventListener('click', function() {
+                htmlEditor.value = `<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>میری Semantic ویب سائٹ</title>
+</head>
+<body>
+    <!-- اپنا کوڈ یہاں لکھیں -->
+    <header>
+        <h1>میری ویب سائٹ</h1>
+        <nav>
+            <a href="#">ہوم</a> |
+            <a href="#">ہمارے بارے میں</a> |
+            <a href="#">رابطہ</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>خوش آمدید</h2>
+            <p>یہ ایک سیکشن ہے جس میں آپ کا استقبال کیا جاتا ہے۔</p>
+        </section>
+
+        <article>
+            <h3>میرا پہلا بلاگ پوسٹ</h3>
+            <p>یہاں میں اپنے خیالات شیئر کر رہا ہوں۔</p>
+        </article>
+    </main>
+
+    <aside>
+        <h4>مزید معلومات</h4>
+        <p>یہاں کچھ اضافی معلومات دی گئی ہیں۔</p>
+    </aside>
+
+    <footer>
+        <p>© 2025 میری ویب سائٹ - تمام حقوق محفوظ ہیں</p>
+    </footer>
+</body>
+</html>`;
+                updatePreview();
+            });
+            
+            // Update preview function
+            function updatePreview() {
+                const htmlCode = htmlEditor.value;
+                previewOutput.innerHTML = htmlCode;
+                
+                // Execute script tags if any
+                const scripts = previewOutput.getElementsByTagName('script');
+                for (let i = 0; i < scripts.length; i++) {
+                    try {
+                        eval(scripts[i].innerHTML);
+                    } catch (e) {
+                        console.error('Error executing script:', e);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

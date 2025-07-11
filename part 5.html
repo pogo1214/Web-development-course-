@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML ورک بک - باب 5 | Lists in HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #2c3e50;
+            line-height: 1.8;
+            padding: 20px;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #e1e8ed;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #1a5fb4, #2980b9);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 5px solid #155a9e;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chapter-info {
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #2980b9;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #3498db;
+        }
+        
+        h3 {
+            color: #1a5fb4;
+            margin: 15px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: #e3f2fd;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #1a5fb4;
+        }
+        
+        .note {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .example {
+            background: #f9fbe7;
+            border: 1px solid #d4e157;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .practice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px dashed #1a5fb4;
+        }
+        
+        .practice h2 {
+            text-align: center;
+            color: #1a5fb4;
+            border-bottom: none;
+            margin-bottom: 25px;
+        }
+        
+        .task {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+        
+        th {
+            background: #1a5fb4;
+            color: white;
+            padding: 12px;
+            text-align: right;
+        }
+        
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+        
+        .editor-container {
+            background: #2c3e50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1a252f;
+            padding: 10px 15px;
+            border-radius: 8px 8px 0 0;
+            color: #ecf0f1;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .editor-tabs {
+            display: flex;
+        }
+        
+        .editor-tab {
+            padding: 5px 15px;
+            background: #34495e;
+            margin-left: 5px;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+        }
+        
+        .editor-tab.active {
+            background: #2c3e50;
+        }
+        
+        .editor-content {
+            background: #1a252f;
+            padding: 15px;
+            border-radius: 0 0 8px 8px;
+            min-height: 200px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 180px;
+            background: #1a252f;
+            color: #ecf0f1;
+            border: none;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            resize: none;
+            border-radius: 5px;
+            direction: ltr;
+        }
+        
+        .preview {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            min-height: 150px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: #1a5fb4;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background: #155a9e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        #run-btn {
+            background: #27ae60;
+        }
+        
+        #run-btn:hover {
+            background: #219653;
+        }
+        
+        #reset-btn {
+            background: #e74c3c;
+        }
+        
+        #reset-btn:hover {
+            background: #c0392b;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #f1f8ff;
+            color: #1a5fb4;
+            font-size: 1.1rem;
+            border-top: 1px solid #d1e8ff;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            section {
+                padding: 20px 15px;
+            }
+            
+            .editor-container {
+                padding: 10px;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML ورک بک</h1>
+            <div class="chapter-info">باب 5: Lists in HTML – Ordered & Unordered Lists</div>
+        </header>
+        
+        <div class="content">
+            <section id="unordered-list">
+                <h2>📋 1. Unordered List – بغیر ترتیب والی فہرست</h2>
+                <p><strong>Unordered List</strong> وہ فہرست ہوتی ہے جس میں آئٹمز (Items) گول نقطے (•) کی شکل میں ظاہر ہوتے ہیں۔ ترتیب ضروری نہیں ہوتی۔</p>
+                
+                <h3>✅ Syntax:</h3>
+                <div class="code-block">
+&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+                </div>
+                
+                <h3>🖼️ براؤزر میں ایسا نظر آئے گا:</h3>
+                <div class="example">
+                    <ul style="direction: rtl;">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="ordered-list">
+                <h2>🔢 2. Ordered List – ترتیب والی فہرست</h2>
+                <p><strong>Ordered List</strong> وہ فہرست ہوتی ہے جس میں آئٹمز (Items) نمبر یا حروف کے ساتھ ظاہر ہوتے ہیں۔</p>
+                
+                <h3>✅ Syntax:</h3>
+                <div class="code-block">
+&lt;ol&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ol&gt;
+                </div>
+                
+                <h3>🖼️ براؤزر میں ایسا نظر آئے گا:</h3>
+                <div class="example">
+                    <ol style="direction: rtl;">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <section id="tags-explained">
+                <h2>📝 List Tags کی وضاحت:</h2>
+                
+                <table>
+                    <tr>
+                        <th>Tag</th>
+                        <th>کام</th>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;ul&gt;</code></td>
+                        <td>Unordered list کو ظاہر کرتا ہے</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;ol&gt;</code></td>
+                        <td>Ordered list کو ظاہر کرتا ہے</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;li&gt;</code></td>
+                        <td>List کا ہر ایک آئٹم</td>
+                    </tr>
+                </table>
+                
+                <div class="note">
+                    <h3>💡 خاص باتیں:</h3>
+                    <ul>
+                        <li><code>&lt;ul&gt;</code> اور <code>&lt;ol&gt;</code> دونوں میں صرف <code>&lt;li&gt;</code> آئٹمز لکھے جاتے ہیں</li>
+                        <li>Lists nested (یعنی ایک کے اندر دوسری) بھی بنائی جا سکتی ہیں</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="complete-example">
+                <h2>🎯 مکمل مثال:</h2>
+                <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;HTML Lists&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Programming Languages&lt;/h1&gt;
+    &lt;ul&gt;
+      &lt;li&gt;HTML&lt;/li&gt;
+      &lt;li&gt;CSS&lt;/li&gt;
+      &lt;li&gt;JavaScript&lt;/li&gt;
+      &lt;li&gt;Python&lt;/li&gt;
+      &lt;li&gt;Java&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;My Daily Routine&lt;/h2&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Wake up&lt;/li&gt;
+      &lt;li&gt;Study&lt;/li&gt;
+      &lt;li&gt;Practice coding&lt;/li&gt;
+      &lt;li&gt;Sleep&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+                </div>
+            </section>
+            
+            <section class="practice">
+                <h2>🧪 مشقیں:</h2>
+                
+                <div class="task">
+                    <h3>مشق 1:</h3>
+                    <p>ایک unordered list بنائیں جس میں 5 programming languages ہوں</p>
+                </div>
+                
+                <div class="task">
+                    <h3>مشق 2:</h3>
+                    <p>ایک ordered list بنائیں جس میں آپ کا روزمرہ کا 4-step schedule ہو</p>
+                </div>
+                
+                <div class="task">
+                    <h3>مشق 3:</h3>
+                    <p>دونوں کو ایک HTML صفحے میں دکھائیں</p>
+                </div>
+                
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <div class="editor-tabs">
+                            <div class="editor-tab active">index.html</div>
+                        </div>
+                        <div>HTML ایڈیٹر</div>
+                    </div>
+                    <div class="editor-content">
+                        <textarea id="html-editor">&lt;!DOCTYPE html&gt;
+&lt;html lang="ur" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;فہرستیں&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- اپنا کوڈ یہاں لکھیں --&gt;
+    &lt;h1&gt;پروگرامنگ زبانیں&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;HTML&lt;/li&gt;
+        &lt;li&gt;CSS&lt;/li&gt;
+        &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;li&gt;Python&lt;/li&gt;
+        &lt;li&gt;Java&lt;/li&gt;
+    &lt;/ul&gt;
+    
+    &lt;h2&gt;میری روزمرہ روٹین&lt;/h2&gt;
+    &lt;ol&gt;
+        &lt;li&gt;صبح اٹھنا&lt;/li&gt;
+        &lt;li&gt;پڑھائی&lt;/li&gt;
+        &lt;li&gt;کوڈنگ کی مشق&lt;/li&gt;
+        &lt;li&gt;سونے جانا&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                    </div>
+                </div>
+                
+                <div class="preview">
+                    <h3>نتائج کا پیش نظارہ:</h3>
+                    <div id="preview-output">
+                        <!-- Preview will be rendered here -->
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button id="run-btn">کوڈ چلائیں</button>
+                    <button id="reset-btn">دوبارہ شروع کریں</button>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>HTML ورک بک - باب 5 | تیار کردہ: DeepSeek-R1</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const htmlEditor = document.getElementById('html-editor');
+            const previewOutput = document.getElementById('preview-output');
+            const runBtn = document.getElementById('run-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            
+            // Initial preview
+            updatePreview();
+            
+            // Run button click event
+            runBtn.addEventListener('click', updatePreview);
+            
+            // Reset button click event
+            resetBtn.addEventListener('click', function() {
+                htmlEditor.value = `<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>فہرستیں</title>
+</head>
+<body>
+    <!-- اپنا کوڈ یہاں لکھیں -->
+    <h1>پروگرامنگ زبانیں</h1>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>Java</li>
+    </ul>
+    
+    <h2>میری روزمرہ روٹین</h2>
+    <ol>
+        <li>صبح اٹھنا</li>
+        <li>پڑھائی</li>
+        <li>کوڈنگ کی مشق</li>
+        <li>سونے جانا</li>
+    </ol>
+</body>
+</html>`;
+                updatePreview();
+            });
+            
+            // Update preview function
+            function updatePreview() {
+                const htmlCode = htmlEditor.value;
+                previewOutput.innerHTML = htmlCode;
+                
+                // Execute script tags if any
+                const scripts = previewOutput.getElementsByTagName('script');
+                for (let i = 0; i < scripts.length; i++) {
+                    try {
+                        eval(scripts[i].innerHTML);
+                    } catch (e) {
+                        console.error('Error executing script:', e);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>باب 12: CSS کے اہم Properties</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Nafees Nastaleeq', 'Noto Nastaliq Urdu', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #4a6baf;
+        }
+        
+        h1 {
+            color: #2c5282;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .chapter-info {
+            color: #4a5568;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            padding: 25px;
+            border-radius: 12px;
+            background-color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .section-title i {
+            font-size: 2rem;
+            margin-left: 15px;
+        }
+        
+        .section-title h2 {
+            color: #2c5282;
+            font-size: 1.8rem;
+        }
+        
+        .section-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .explanation {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .examples {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .css-code {
+            background-color: #2d3748;
+            color: #cbd5e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .code-tag {
+            color: #63b3ed;
+        }
+        
+        .code-attr {
+            color: #f6ad55;
+        }
+        
+        .code-text {
+            color: #a0aec0;
+        }
+        
+        .example-box {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #eaeaea;
+        }
+        
+        .point {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #4a6baf;
+        }
+        
+        .point-title {
+            font-weight: bold;
+            color: #2c5282;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .properties-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .properties-table th, .properties-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+        
+        .properties-table th {
+            background-color: #2c5282;
+            color: white;
+        }
+        
+        .properties-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .reminder {
+            background: linear-gradient(90deg, #4a6baf, #2c5282);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .reminder h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .reminder-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            color: #4a5568;
+        }
+        
+        @media (max-width: 768px) {
+            .section-content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>باب 12: CSS کے اہم Properties</h1>
+            <p class="chapter-info">رنگ، فونٹ، بیک گراؤنڈ، بارڈر اور دیگر اہم خصوصیات</p>
+        </header>
+        
+        <!-- رنگ (Colors) سیکشن -->
+        <div class="section" style="border-left-color: #e53e3e;">
+            <div class="section-title">
+                <i class="fas fa-palette" style="color: #e53e3e;"></i>
+                <h2>1. رنگ (Colors)</h2>
+            </div>
+            
+            <div class="section-content">
+                <div class="explanation">
+                    <p>CSS میں رنگ دینے کے تین طریقے ہیں:</p>
+                    
+                    <div class="css-code">
+                        <span class="code-text">/* رنگ کا نام استعمال کرتے ہوئے */</span><br>
+                        color: red;<br><br>
+                        
+                        <span class="code-text">/* Hex کوڈ استعمال کرتے ہوئے */</span><br>
+                        color: #ff0000;<br><br>
+                        
+                        <span class="code-text">/* RGB ویلیوز استعمال کرتے ہوئے */</span><br>
+                        color: rgb(255, 0, 0);
+                    </div>
+                    
+                    <div class="point">
+                        <div class="point-title">مثال:</div>
+                        <p style="color: blue; padding: 10px; background-color: #f0f8ff; border-radius: 5px;">
+                            یہ نیلا پیراگراف ہے
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="examples">
+                    <h3>رنگوں کے مختلف طریقے:</h3>
+                    <div class="example-box" style="background-color: #ffebee; padding: 15px;">
+                        <p style="color: red;">نام سے: red</p>
+                        <p style="color: #ff5722;">Hex سے: #ff5722</p>
+                        <p style="color: rgb(76, 175, 80);">RGB سے: rgb(76, 175, 80)</p>
+                    </div>
+                    
+                    <h3>عملی استعمال:</h3>
+                    <div class="css-code">
+                        <span class="code-tag">&lt;p</span> <span class="code-attr">style=</span><span class="code-text">"color: blue;"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;یہ نیلا پیراگراف ہے<br>
+                        <span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بیک گراؤنڈ (Background) سیکشن -->
+        <div class="section" style="border-left-color: #38a169;">
+            <div class="section-title">
+                <i class="fas fa-image" style="color: #38a169;"></i>
+                <h2>2. بیک گراؤنڈ (Background)</h2>
+            </div>
+            
+            <div class="section-content">
+                <div class="explanation">
+                    <p>بیک گراؤنڈ کو کنٹرول کرنے کے لیے CSS خصوصیات:</p>
+                    
+                    <div class="css-code">
+                        <span class="code-text">/* بیک گراؤنڈ رنگ */</span><br>
+                        background-color: yellow;<br><br>
+                        
+                        <span class="code-text">/* بیک گراؤنڈ تصویر */</span><br>
+                        background-image: url('image.jpg');<br><br>
+                        
+                        <span class="code-text">/* بیک گراؤنڈ دہرانا */</span><br>
+                        background-repeat: no-repeat;
+                    </div>
+                    
+                    <div class="point">
+                        <div class="point-title">مثال:</div>
+                        <div style="background-color: lightblue; padding: 20px; border-radius: 8px; margin-top: 10px;">
+                            <p>یہ ایک بیک گراؤنڈ کلر والا باکس ہے</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="examples">
+                    <h3>عملی استعمال:</h3>
+                    <div class="css-code">
+                        <span class="code-tag">&lt;div</span> <span class="code-attr">style=</span><span class="code-text">"background-color: lightblue; padding: 10px;"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;یہ ایک بیک گراؤنڈ کلر والا باکس ہے<br>
+                        <span class="code-tag">&lt;/div&gt;</span>
+                    </div>
+                    
+                    <h3>بیک گراؤنڈ تصویر:</h3>
+                    <div class="example-box" style="background-image: linear-gradient(45deg, #ff9a9e, #fad0c4); padding: 20px; min-height: 100px;">
+                        <p style="color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">گرڈینٹ بیک گراؤنڈ والا باکس</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- فونٹ (Fonts) سیکشن -->
+        <div class="section" style="border-left-color: #d69e2e;">
+            <div class="section-title">
+                <i class="fas fa-font" style="color: #d69e2e;"></i>
+                <h2>3. فونٹ (Fonts)</h2>
+            </div>
+            
+            <div class="section-content">
+                <div class="explanation">
+                    <p>فونٹ کو کنٹرول کرنے کے لیے CSS خصوصیات:</p>
+                    
+                    <table class="properties-table">
+                        <tr>
+                            <th>خصوصیت</th>
+                            <th>تفصیل</th>
+                        </tr>
+                        <tr>
+                            <td>font-family</td>
+                            <td>فونٹ کا نام (جیسے Arial, 'Nafees Nastaleeq')</td>
+                        </tr>
+                        <tr>
+                            <td>font-size</td>
+                            <td>فونٹ کی سائز (px, em, rem میں)</td>
+                        </tr>
+                        <tr>
+                            <td>font-weight</td>
+                            <td>فونٹ کی موٹائی (normal, bold)</td>
+                        </tr>
+                        <tr>
+                            <td>font-style</td>
+                            <td>فونٹ کا انداز (italic, normal)</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="examples">
+                    <h3>مثال:</h3>
+                    <div class="example-box">
+                        <p style="font-family: 'Arial'; font-size: 18px; font-weight: bold;">
+                            یہ بولڈ اور خوبصورت فونٹ ہے
+                        </p>
+                    </div>
+                    
+                    <div class="css-code">
+                        <span class="code-tag">&lt;p</span> <span class="code-attr">style=</span><span class="code-text">"font-family: 'Courier New'; font-size: 18px; font-weight: bold;"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;یہ بولڈ اور خوبصورت فونٹ ہے<br>
+                        <span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <h3>فونٹ سائز کا موازنہ:</h3>
+                    <div class="example-box">
+                        <p style="font-size: 12px;">12px فونٹ سائز</p>
+                        <p style="font-size: 16px;">16px فونٹ سائز</p>
+                        <p style="font-size: 24px;">24px فونٹ سائز</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بارڈر (Border) سیکشن -->
+        <div class="section" style="border-left-color: #9f7aea;">
+            <div class="section-title">
+                <i class="fas fa-border-all" style="color: #9f7aea;"></i>
+                <h2>4. بارڈر (Border)</h2>
+            </div>
+            
+            <div class="section-content">
+                <div class="explanation">
+                    <p>بارڈرز کو کنٹرول کرنے کے لیے CSS خصوصیات:</p>
+                    
+                    <div class="css-code">
+                        <span class="code-text">/* سادہ بارڈر */</span><br>
+                        border: 2px solid black;<br><br>
+                        
+                        <span class="code-text">/* بارڈر کی موٹائی، انداز اور رنگ الگ الگ */</span><br>
+                        border-width: 2px;<br>
+                        border-style: dashed;<br>
+                        border-color: green;<br><br>
+                        
+                        <span class="code-text">/* گول کونے */</span><br>
+                        border-radius: 10px;
+                    </div>
+                </div>
+                
+                <div class="examples">
+                    <h3>مثال:</h3>
+                    <div class="example-box" style="border: 2px dashed red; padding: 15px; margin-bottom: 20px;">
+                        یہ ایک بارڈر والا باکس ہے
+                    </div>
+                    
+                    <h3>مختلف بارڈرز:</h3>
+                    <div style="border: 3px solid #4a6baf; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+        ٹھوس بارڈر (solid)
+    </div>
+    <div style="border: 2px dashed #e53e3e; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+        ڈیشڈ بارڈر (dashed)
+    </div>
+    <div style="border: 2px dotted #38a169; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+        ڈاٹڈ بارڈر (dotted)
+    </div>
+    
+    <div class="css-code">
+        <span class="code-tag">&lt;div</span> <span class="code-attr">style=</span><span class="code-text">"border: 2px dashed red; padding: 10px;"</span><span class="code-tag">&gt;</span><br>
+        &nbsp;&nbsp;یہ ایک بارڈر والا باکس ہے<br>
+        <span class="code-tag">&lt;/div&gt;</span>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- ٹیکسٹ کی Alignment سیکشن -->
+<div class="section" style="border-left-color: #0ea5e9;">
+    <div class="section-title">
+        <i class="fas fa-align-center" style="color: #0ea5e9;"></i>
+        <h2>5. Text کی Alignment</h2>
+    </div>
+    
+    <div class="section-content">
+        <div class="explanation">
+            <p>ٹیکسٹ کی سیدھ کو کنٹرول کرنے کے لیے:</p>
+            
+            <div class="css-code">
+                text-align: left;<br>
+                text-align: center;<br>
+                text-align: right;<br>
+                text-align: justify;
+            </div>
+            
+            <div class="point">
+                <div class="point-title">مثال:</div>
+                <h3 style="text-align: center; background-color: #e6f7ff; padding: 10px; border-radius: 5px;">
+                    مرکزی عنوان
+                </h3>
+            </div>
+        </div>
+        
+        <div class="examples">
+            <h3>مختلف Alignment:</h3>
+            <div class="example-box">
+                <p style="text-align: right;">دائیں جانب سیدھ (right)</p>
+                <p style="text-align: center;">درمیان میں سیدھ (center)</p>
+                <p style="text-align: left;">بائیں جانب سیدھ (left)</p>
+                <p style="text-align: justify;">برابر سیدھ (justify) - یہ ٹیکسٹ دونوں جانب برابر ہوتا ہے۔ یہ خصوصیت لمبے پیراگراف کے لیے بہترین ہے۔</p>
+            </div>
+            
+            <div class="css-code">
+                <span class="code-tag">&lt;h2</span> <span class="code-attr">style=</span><span class="code-text">"text-align: center;"</span><span class="code-tag">&gt;</span><br>
+                &nbsp;&nbsp;مرکزی عنوان<br>
+                <span class="code-tag">&lt;/h2&gt;</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- اندرونی اور بیرونی جگہ سیکشن -->
+<div class="section" style="border-left-color: #ed64a6;">
+    <div class="section-title">
+        <i class="fas fa-arrows-alt" style="color: #ed64a6;"></i>
+        <h2>6. Inner & Outer Space</h2>
+    </div>
+    
+    <div class="section-content">
+        <div class="explanation">
+            <table class="properties-table">
+                <tr>
+                    <th>خصوصیت</th>
+                    <th>کام</th>
+                </tr>
+                <tr>
+                    <td>padding</td>
+                    <td>اندر کی جگہ (عنصر اور اس کے مواد کے درمیان)</td>
+                </tr>
+                <tr>
+                    <td>margin</td>
+                    <td>باہر کی جگہ (عنصر اور دیگر عناصر کے درمیان)</td>
+                </tr>
+            </table>
+            
+            <div class="point">
+                <div class="point-title">مثال:</div>
+                <div style="margin: 20px; padding: 15px; background-color: lightgray; border: 1px solid #999;">
+                    margin اور padding استعمال ہوا ہے
+                </div>
+            </div>
+        </div>
+        
+        <div class="examples">
+            <h3>عملی فرق:</h3>
+            <div class="example-box" style="background-color: #f8f9fa; padding: 15px; position: relative;">
+                <div style="position: absolute; top: 10px; right: 10px; background-color: #ffeb3b; padding: 5px; font-size: 0.8rem;">
+                    باہر کی جگہ (margin)
+                </div>
+                
+                <div style="margin: 40px; background-color: #e3f2fd; position: relative;">
+                    <div style="position: absolute; top: -20px; left: 10px; background-color: #4caf50; color: white; padding: 3px; font-size: 0.8rem;">
+                        اندر کی جگہ (padding)
+                    </div>
+                    <div style="padding: 40px; background-color: #bbdefb;">
+                        مواد کا علاقہ
+                    </div>
+                </div>
+            </div>
+            
+            <div class="css-code">
+                <span class="code-tag">&lt;div</span> <span class="code-attr">style=</span><span class="code-text">"margin: 20px; padding: 15px; background-color: lightgray;"</span><span class="code-tag">&gt;</span><br>
+                &nbsp;&nbsp;margin اور padding استعمال ہوا ہے<br>
+                <span class="code-tag">&lt;/div&gt;</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- یاد رکھنے کے پوائنٹس -->
+<div class="reminder">
+    <h3><i class="fas fa-lightbulb"></i> یاد رکھنے کے پوائنٹس</h3>
+    <div class="reminder-content">
+        <p>• CSS میں ہر لائن کے آخر میں <strong>semicolon (;)</strong> لگانا ضروری ہے</p>
+        <p>• CSS Style کو ہمیشہ <strong>curly braces ({})</strong> میں رکھا جاتا ہے</p>
+        <p>• آپ CSS کو inline، internal یا external تینوں طریقوں سے استعمال کر سکتے ہیں</p>
+        <p>• جدید ویب ڈیزائن کے لیے external CSS سب سے بہتر طریقہ ہے</p>
+    </div>
+</div>
+
+<footer>
+    <p>باب 12: CSS کے اہم Properties — رنگ، فونٹ، بیک گراؤنڈ، بارڈر</p>
+    <p>© 2023 ویب ڈویلپمنٹ کورس | تمام حقوق محفوظ ہیں</p>
+</footer>
+</div>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

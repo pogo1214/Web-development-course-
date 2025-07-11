@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML ورک بک - باب 10 | HTML Mini Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #2c3e50;
+            line-height: 1.8;
+            padding: 20px;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #e1e8ed;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #1a5fb4, #2980b9);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 5px solid #155a9e;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chapter-info {
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #2980b9;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #3498db;
+        }
+        
+        h3 {
+            color: #1a5fb4;
+            margin: 15px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: #e3f2fd;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #1a5fb4;
+        }
+        
+        .note {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .example {
+            background: #f9fbe7;
+            border: 1px solid #d4e157;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .practice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px dashed #1a5fb4;
+        }
+        
+        .practice h2 {
+            text-align: center;
+            color: #1a5fb4;
+            border-bottom: none;
+            margin-bottom: 25px;
+        }
+        
+        .task {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .mini-project {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mini-project header {
+            background: #1a5fb4;
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .mini-project nav {
+            background: #2980b9;
+            padding: 10px;
+        }
+        
+        .mini-project nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .mini-project main {
+            padding: 20px;
+        }
+        
+        .mini-project section {
+            background: #f8fafc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .mini-project img {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        
+        .mini-project table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .mini-project th, .mini-project td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+        
+        .mini-project th {
+            background-color: #1a5fb4;
+            color: white;
+        }
+        
+        .mini-project tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .mini-project form {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .mini-project label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        
+        .mini-project input[type="text"],
+        .mini-project input[type="email"],
+        .mini-project textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+        }
+        
+        .mini-project button {
+            background: #1a5fb4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .mini-project aside {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #1a5fb4;
+        }
+        
+        .mini-project footer {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .mini-project audio, .mini-project video {
+            width: 100%;
+            max-width: 500px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .editor-container {
+            background: #2c3e50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1a252f;
+            padding: 10px 15px;
+            border-radius: 8px 8px 0 0;
+            color: #ecf0f1;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .editor-tabs {
+            display: flex;
+        }
+        
+        .editor-tab {
+            padding: 5px 15px;
+            background: #34495e;
+            margin-left: 5px;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+        }
+        
+        .editor-tab.active {
+            background: #2c3e50;
+        }
+        
+        .editor-content {
+            background: #1a252f;
+            padding: 15px;
+            border-radius: 0 0 8px 8px;
+            min-height: 200px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 180px;
+            background: #1a252f;
+            color: #ecf0f1;
+            border: none;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            resize: none;
+            border-radius: 5px;
+            direction: ltr;
+        }
+        
+        .preview {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            min-height: 150px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: #1a5fb4;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background: #155a9e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        #run-btn {
+            background: #27ae60;
+        }
+        
+        #run-btn:hover {
+            background: #219653;
+        }
+        
+        #reset-btn {
+            background: #e74c3c;
+        }
+        
+        #reset-btn:hover {
+            background: #c0392b;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #f1f8ff;
+            color: #1a5fb4;
+            font-size: 1.1rem;
+            border-top: 1px solid #d1e8ff;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            section {
+                padding: 20px 15px;
+            }
+            
+            .editor-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML ورک بک</h1>
+            <div class="chapter-info">باب 10: HTML Mini Project – چھوٹی مکمل ویب سائٹ</div>
+        </header>
+        
+        <div class="content">
+            <section id="project-intro">
+                <h2>💡 ویب سائٹ کا موضوع:</h2>
+                <p><strong>"میری ذاتی ویب سائٹ"</strong><br>(یہ ویب سائٹ ایک شخص کے تعارف، رابطے، اور دلچسپیوں پر مبنی ہوگی)</p>
+            </section>
+            
+            <section id="project-structure">
+                <h2>🌐 ویب سائٹ کا خاکہ (Structure):</h2>
+                <ol>
+                    <li><strong>Header</strong> – ویب سائٹ کا عنوان اور نیویگیشن</li>
+                    <li><strong>Main Section</strong>:
+                        <ul>
+                            <li>تعارف (About Me)</li>
+                            <li>دلچسپیاں (Interests) – Unordered List</li>
+                            <li>تعلیم (Education) – Table</li>
+                            <li>رابطہ فارم (Contact Form)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Aside</strong> – نوٹس یا کوئی چھوٹا پیغام</li>
+                    <li><strong>Footer</strong> – کاپی رائٹ</li>
+                </ol>
+            </section>
+            
+            <section id="complete-code">
+                <h2>✅ مکمل HTML کوڈ:</h2>
+                <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ur"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;میری ذاتی ویب سائٹ&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;میری ویب سائٹ میں خوش آمدید&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;a href="#"&gt;Home&lt;/a&gt; |
+      &lt;a href="#"&gt;About&lt;/a&gt; |
+      &lt;a href="#"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;h2&gt;میرا تعارف&lt;/h2&gt;
+      &lt;p&gt;میرا نام علی ہے۔ میں ایک ویب ڈویلپر بننا چاہتا ہوں۔ یہ میری پہلی ویب سائٹ ہے۔&lt;/p&gt;
+      &lt;img src="https://via.placeholder.com/200" alt="میری تصویر"&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;میری دلچسپیاں&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Programming&lt;/li&gt;
+        &lt;li&gt;Web Designing&lt;/li&gt;
+        &lt;li&gt;Reading&lt;/li&gt;
+        &lt;li&gt;Gaming&lt;/li&gt;
+        &lt;li&gt;Traveling&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;تعلیم&lt;/h2&gt;
+      &lt;table border="1"&gt;
+        &lt;tr&gt;
+          &lt;th&gt;درجہ&lt;/th&gt;
+          &lt;th&gt;ادارہ&lt;/th&gt;
+          &lt;th&gt;سال&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;میٹرک&lt;/td&gt;
+          &lt;td&gt;گورنمنٹ سکول&lt;/td&gt;
+          &lt;td&gt;2020&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;انٹر&lt;/td&gt;
+          &lt;td&gt;گورنمنٹ کالج&lt;/td&gt;
+          &lt;td&gt;2022&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;رابطہ کریں&lt;/h2&gt;
+      &lt;form&gt;
+        &lt;label for="name"&gt;نام:&lt;/label&gt;&lt;br&gt;
+        &lt;input type="text" id="name" name="name"&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;label for="email"&gt;ای میل:&lt;/label&gt;&lt;br&gt;
+        &lt;input type="email" id="email" name="email"&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;label for="message"&gt;پیغام:&lt;/label&gt;&lt;br&gt;
+        &lt;textarea id="message" name="message" rows="4" cols="30"&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;button type="submit"&gt;جمع کریں&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;میری پسندیدہ ویڈیو اور آڈیو&lt;/h2&gt;
+      &lt;audio controls&gt;
+        &lt;source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg"&gt;
+      &lt;/audio&gt;&lt;br&gt;&lt;br&gt;
+      &lt;video width="320" height="240" controls&gt;
+        &lt;source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"&gt;
+      &lt;/video&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;aside&gt;
+    &lt;h4&gt;نوٹس&lt;/h4&gt;
+    &lt;p&gt;یہ میری پہلی ویب سائٹ ہے، اس میں ہر ٹیگ کا استعمال کیا گیا ہے۔&lt;/p&gt;
+  &lt;/aside&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;© 2025 علی کی ویب سائٹ&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+                </div>
+                
+                <h3>🖼️ نتیجہ:</h3>
+                <div class="mini-project">
+                    <header>
+                        <h1>میری ویب سائٹ میں خوش آمدید</h1>
+                        <nav>
+                            <a href="#">Home</a> |
+                            <a href="#">About</a> |
+                            <a href="#">Contact</a>
+                        </nav>
+                    </header>
+
+                    <main>
+                        <section>
+                            <h2>میرا تعارف</h2>
+                            <p>میرا نام علی ہے۔ میں ایک ویب ڈویلپر بننا چاہتا ہوں۔ یہ میری پہلی ویب سائٹ ہے۔</p>
+                            <img src="https://via.placeholder.com/200" alt="میری تصویر">
+                        </section>
+
+                        <section>
+                            <h2>میری دلچسپیاں</h2>
+                            <ul>
+                                <li>Programming</li>
+                                <li>Web Designing</li>
+                                <li>Reading</li>
+                                <li>Gaming</li>
+                                <li>Traveling</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h2>تعلیم</h2>
+                            <table border="1">
+                                <tr>
+                                    <th>درجہ</th>
+                                    <th>ادارہ</th>
+                                    <th>سال</th>
+                                </tr>
+                                <tr>
+                                    <td>میٹرک</td>
+                                    <td>گورنمنٹ سکول</td>
+                                    <td>2020</td>
+                                </tr>
+                                <tr>
+                                    <td>انٹر</td>
+                                    <td>گورنمنٹ کالج</td>
+                                    <td>2022</td>
+                                </tr>
+                            </table>
+                        </section>
+
+                        <section>
+                            <h2>رابطہ کریں</h2>
+                            <form>
+                                <label for="name">نام:</label><br>
+                                <input type="text" id="name" name="name"><br><br>
+
+                                <label for="email">ای میل:</label><br>
+                                <input type="email" id="email" name="email"><br><br>
+
+                                <label for="message">پیغام:</label><br>
+                                <textarea id="message" name="message" rows="4" cols="30"></textarea><br><br>
+
+                                <button type="submit">جمع کریں</button>
+                            </form>
+                        </section>
+
+                        <section>
+                            <h2>میری پسندیدہ ویڈیو اور آڈیو</h2>
+                            <audio controls>
+                                <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                            </audio><br><br>
+                            <video width="320" height="240" controls>
+                                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            </video>
+                        </section>
+                    </main>
+
+                    <aside>
+                        <h4>نوٹس</h4>
+                        <p>یہ میری پہلی ویب سائٹ ہے، اس میں ہر ٹیگ کا استعمال کیا گیا ہے۔</p>
+                    </aside>
+
+                    <footer>
+                        <p>© 2025 علی کی ویب سائٹ</p>
+                    </footer>
+                </div>
+            </section>
+            
+            <section class="practice">
+                <h2>✅ کیا کریں:</h2>
+                <ul>
+                    <li>اس کو CodePen، Replit یا VS Code میں چلائیں</li>
+                    <li>اپنے بارے میں معلومات ڈالیں</li>
+                    <li>تصویر، آڈیو یا ویڈیو لنک بدل سکتے ہیں</li>
+                </ul>
+                
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <div class="editor-tabs">
+                            <div class="editor-tab active">index.html</div>
+                        </div>
+                        <div>HTML ایڈیٹر</div>
+                    </div>
+                    <div class="editor-content">
+                        <textarea id="html-editor">&lt;!DOCTYPE html&gt;
+&lt;html lang="ur" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;میری ذاتی ویب سائٹ&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;header&gt;
+        &lt;h1&gt;میری ویب سائٹ میں خوش آمدید&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="#"&gt;ہوم&lt;/a&gt; |
+            &lt;a href="#"&gt;میرے بارے میں&lt;/a&gt; |
+            &lt;a href="#"&gt;رابطہ&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;h2&gt;میرا تعارف&lt;/h2&gt;
+            &lt;p&gt;میرا نام [اپنا نام] ہے۔ میں [اپنا تعارف]۔ یہ میری پہلی ویب سائٹ ہے۔&lt;/p&gt;
+            &lt;img src="https://via.placeholder.com/200" alt="میری تصویر"&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;میری دلچسپیاں&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;[پہلی دلچسپی]&lt;/li&gt;
+                &lt;li&gt;[دوسری دلچسپی]&lt;/li&gt;
+                &lt;li&gt;[تیسری دلچسپی]&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;تعلیم&lt;/h2&gt;
+            &lt;table border="1"&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;درجہ&lt;/th&gt;
+                    &lt;th&gt;ادارہ&lt;/th&gt;
+                    &lt;th&gt;سال&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;[درجہ]&lt;/td&gt;
+                    &lt;td&gt;[ادارہ]&lt;/td&gt;
+                    &lt;td&gt;[سال]&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;رابطہ کریں&lt;/h2&gt;
+            &lt;form&gt;
+                &lt;label for="name"&gt;نام:&lt;/label&gt;&lt;br&gt;
+                &lt;input type="text" id="name" name="name"&gt;&lt;br&gt;&lt;br&gt;
+
+                &lt;label for="email"&gt;ای میل:&lt;/label&gt;&lt;br&gt;
+                &lt;input type="email" id="email" name="email"&gt;&lt;br&gt;&lt;br&gt;
+
+                &lt;label for="message"&gt;پیغام:&lt;/label&gt;&lt;br&gt;
+                &lt;textarea id="message" name="message" rows="4" cols="30"&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;
+
+                &lt;button type="submit"&gt;جمع کریں&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;میری پسندیدہ ویڈیو اور آڈیو&lt;/h2&gt;
+            &lt;audio controls&gt;
+                &lt;source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg"&gt;
+            &lt;/audio&gt;&lt;br&gt;&lt;br&gt;
+            &lt;video width="320" height="240" controls&gt;
+                &lt;source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"&gt;
+            &lt;/video&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;aside&gt;
+        &lt;h4&gt;نوٹس&lt;/h4&gt;
+        &lt;p&gt;یہ میری پہلی ویب سائٹ ہے، اس میں ہر ٹیگ کا استعمال کیا گیا ہے۔&lt;/p&gt;
+    &lt;/aside&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;© 2025 [آپ کا نام] کی ویب سائٹ&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                    </div>
+                </div>
+                
+                <div class="preview">
+                    <h3>نتائج کا پیش نظارہ:</h3>
+                    <div id="preview-output">
+                        <!-- Preview will be rendered here -->
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button id="run-btn">کوڈ چلائیں</button>
+                    <button id="reset-btn">دوبارہ شروع کریں</button>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>HTML ورک بک - باب 10 | تیار کردہ: DeepSeek-R1</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const htmlEditor = document.getElementById('html-editor');
+            const previewOutput = document.getElementById('preview-output');
+            const runBtn = document.getElementById('run-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            
+            // Initial preview
+            updatePreview();
+            
+            // Run button click event
+            runBtn.addEventListener('click', updatePreview);
+            
+            // Reset button click event
+            resetBtn.addEventListener('click', function() {
+                htmlEditor.value = `<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>میری ذاتی ویب سائٹ</title>
+</head>
+<body>
+
+    <header>
+        <h1>میری ویب سائٹ میں خوش آمدید</h1>
+        <nav>
+            <a href="#">ہوم</a> |
+            <a href="#">میرے بارے میں</a> |
+            <a href="#">رابطہ</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>میرا تعارف</h2>
+            <p>میرا نام [اپنا نام] ہے۔ میں [اپنا تعارف]۔ یہ میری پہلی ویب سائٹ ہے۔</p>
+            <img src="https://via.placeholder.com/200" alt="میری تصویر">
+        </section>
+
+        <section>
+            <h2>میری دلچسپیاں</h2>
+            <ul>
+                <li>[پہلی دلچسپی]</li>
+                <li>[دوسری دلچسپی]</li>
+                <li>[تیسری دلچسپی]</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>تعلیم</h2>
+            <table border="1">
+                <tr>
+                    <th>درجہ</th>
+                    <th>ادارہ</th>
+                    <th>سال</th>
+                </tr>
+                <tr>
+                    <td>[درجہ]</td>
+                    <td>[ادارہ]</td>
+                    <td>[سال]</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>رابطہ کریں</h2>
+            <form>
+                <label for="name">نام:</label><br>
+                <input type="text" id="name" name="name"><br><br>
+
+                <label for="email">ای میل:</label><br>
+                <input type="email" id="email" name="email"><br><br>
+
+                <label for="message">پیغام:</label><br>
+                <textarea id="message" name="message" rows="4" cols="30"></textarea><br><br>
+
+                <button type="submit">جمع کریں</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>میری پسندیدہ ویڈیو اور آڈیو</h2>
+            <audio controls>
+                <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+            </audio><br><br>
+            <video width="320" height="240" controls>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+        </section>
+    </main>
+
+    <aside>
+        <h4>نوٹس</h4>
+        <p>یہ میری پہلی ویب سائٹ ہے، اس میں ہر ٹیگ کا استعمال کیا گیا ہے۔</p>
+    </aside>
+
+    <footer>
+        <p>© 2025 [آپ کا نام] کی ویب سائٹ</p>
+    </footer>
+
+</body>
+</html>`;
+                updatePreview();
+            });
+            
+            // Update preview function
+            function updatePreview() {
+                const htmlCode = htmlEditor.value;
+                previewOutput.innerHTML = htmlCode;
+                
+                // Execute script tags if any
+                const scripts = previewOutput.getElementsByTagName('script');
+                for (let i = 0; i < scripts.length; i++) {
+                    try {
+                        eval(scripts[i].innerHTML);
+                    } catch (e) {
+                        console.error('Error executing script:', e);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

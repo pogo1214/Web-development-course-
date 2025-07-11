@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>باب 11: CSS کی بنیاد – HTML ویب سائٹ کو خوبصورت بنانا</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Nafees Nastaleeq', 'Noto Nastaliq Urdu', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c5282;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ffc107;
+        }
+        
+        h2 {
+            color: #1a3a5f;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            background-color: #f0f7ff;
+            padding: 10px 15px;
+            border-right: 5px solid #2c5282;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .definition-box {
+            background-color: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .definition-title {
+            font-weight: bold;
+            color: #1b5e20;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .method-box {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffa000;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .method-title {
+            font-weight: bold;
+            color: #e65100;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: right;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #2c5282;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .code-example {
+            background-color: #2d3748;
+            color: #cbd5e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+        }
+        
+        .code-tag {
+            color: #63b3ed;
+        }
+        
+        .code-attr {
+            color: #f6ad55;
+        }
+        
+        .code-text {
+            color: #a0aec0;
+        }
+        
+        .code-comment {
+            color: #718096;
+            font-style: italic;
+        }
+        
+        .benefits-list {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .benefits-list li:before {
+            content: "✓";
+            color: #1e88e5;
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+        
+        .color-example {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>باب 11: CSS کی بنیاد – HTML ویب سائٹ کو خوبصورت بنانا</h1>
+        
+        <div class="definition-box">
+            <div class="definition-title">📘 CSS کیا ہے؟ (Cascading Style Sheets)</div>
+            <p>CSS کا کام ہے <strong>HTML ویب سائٹ کو خوبصورت، رنگین اور ترتیب سے</strong> بنانا۔</p>
+        </div>
+        
+        <h2>📌 CSS کا کام کیا ہے؟</h2>
+        <p>CSS <strong>HTML Tags کو style</strong> دیتا ہے جیسے:</p>
+        <ul>
+            <li>رنگ (color)</li>
+            <li>فونٹ (font)</li>
+            <li>بارڈر (border)</li>
+            <li>بیک گراؤنڈ (background)</li>
+            <li>جگہ (margin, padding)</li>
+            <li>ترتیب (layout)</li>
+        </ul>
+        
+        <h2>🧠 CSS کیسے کام کرتا ہے؟</h2>
+        <p>CSS HTML عناصر کو منتخب کرکے ان پر مختلف خصوصیات (properties) لاگو کرتا ہے۔</p>
+        
+        <h2>🧪 CSS لکھنے کے 3 طریقے:</h2>
+        <table>
+            <tr>
+                <th>طریقہ</th>
+                <th>کہاں لکھتے ہیں؟</th>
+                <th>استعمال</th>
+            </tr>
+            <tr>
+                <td>1️⃣ Inline CSS</td>
+                <td>HTML Tag کے اندر <code>style=""</code></td>
+                <td>جلدی test کے لیے</td>
+            </tr>
+            <tr>
+                <td>2️⃣ Internal CSS</td>
+                <td><code>&lt;style&gt;</code> tag میں HTML کے <code>&lt;head&gt;</code> میں</td>
+                <td>ایک ہی صفحہ کے لیے</td>
+            </tr>
+            <tr>
+                <td>3️⃣ External CSS</td>
+                <td>الگ <code>.css</code> فائل</td>
+                <td>پوری ویب سائٹ کے لیے</td>
+            </tr>
+        </table>
+        
+        <h2>✅ مثال 1: Inline CSS</h2>
+        <div class="code-example">
+            <span class="code-tag">&lt;p</span> <span class="code-attr">style=</span><span class="code-text">"color: green; font-size: 20px;"</span><span class="code-tag">&gt;</span>یہ سبز پیراگراف ہے۔<span class="code-tag">&lt;/p&gt;</span>
+        </div>
+        
+        <h2>✅ مثال 2: Internal CSS</h2>
+        <div class="code-example">
+            <span class="code-tag">&lt;!DOCTYPE html&gt;</span><br>
+            <span class="code-tag">&lt;html&gt;</span><br>
+            <span class="code-tag">&lt;head&gt;</span><br>
+            &nbsp;&nbsp;<span class="code-tag">&lt;style&gt;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;h1 {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: blue;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;p {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family: 'Arial';<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size: 18px;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;<span class="code-tag">&lt;/style&gt;</span><br>
+            <span class="code-tag">&lt;/head&gt;</span><br>
+            <span class="code-tag">&lt;body&gt;</span><br>
+            <br>
+            &nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span>میری ویب سائٹ<span class="code-tag">&lt;/h1&gt;</span><br>
+            &nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>یہ ایک خوبصورت پیراگراف ہے۔<span class="code-tag">&lt;/p&gt;</span><br>
+            <br>
+            <span class="code-tag">&lt;/body&gt;</span><br>
+            <span class="code-tag">&lt;/html&gt;</span>
+        </div>
+        
+        <h2>✅ مثال 3: External CSS</h2>
+        <h3>HTML فائل:</h3>
+        <div class="code-example">
+            <span class="code-tag">&lt;head&gt;</span><br>
+            &nbsp;&nbsp;<span class="code-tag">&lt;link</span> <span class="code-attr">rel=</span><span class="code-text">"stylesheet"</span> <span class="code-attr">href=</span><span class="code-text">"style.css"</span><span class="code-tag">&gt;</span><br>
+            <span class="code-tag">&lt;/head&gt;</span>
+        </div>
+        
+        <h3>style.css فائل:</h3>
+        <div class="code-example">
+            body {<br>
+            &nbsp;&nbsp;background-color: #f0f0f0;<br>
+            }<br>
+            h1 {<br>
+            &nbsp;&nbsp;color: purple;<br>
+            }
+        </div>
+        
+        <h2>🔠 CSS میں Color کیسے دیتے ہیں؟</h2>
+        <table>
+            <tr>
+                <th>طریقہ</th>
+                <th>مثال</th>
+                <th>نمونہ</th>
+            </tr>
+            <tr>
+                <td>نام سے</td>
+                <td><code>color: red;</code></td>
+                <td><span class="color-example" style="background-color: red;"></span></td>
+            </tr>
+            <tr>
+                <td>Hex Code سے</td>
+                <td><code>color: #ff0000;</code></td>
+                <td><span class="color-example" style="background-color: #ff0000;"></span></td>
+            </tr>
+            <tr>
+                <td>RGB سے</td>
+                <td><code>color: rgb(255, 0, 0);</code></td>
+                <td><span class="color-example" style="background-color: rgb(255, 0, 0);"></span></td>
+            </tr>
+        </table>
+        
+        <h2>✨ CSS کے کچھ ضروری Properties</h2>
+        <table>
+            <tr>
+                <th>Property</th>
+                <th>کام</th>
+                <th>مثال</th>
+            </tr>
+            <tr>
+                <td><code>color</code></td>
+                <td>ٹیکسٹ کا رنگ</td>
+                <td><code>color: blue;</code></td>
+            </tr>
+            <tr>
+                <td><code>background</code></td>
+                <td>بیک گراؤنڈ رنگ یا تصویر</td>
+                <td><code>background: #f0f0f0;</code></td>
+            </tr>
+            <tr>
+                <td><code>font-size</code></td>
+                <td>فونٹ کی سائز</td>
+                <td><code>font-size: 16px;</code></td>
+            </tr>
+            <tr>
+                <td><code>font-family</code></td>
+                <td>فونٹ کا نام</td>
+                <td><code>font-family: Arial;</code></td>
+            </tr>
+            <tr>
+                <td><code>text-align</code></td>
+                <td>Text کی alignment</td>
+                <td><code>text-align: center;</code></td>
+            </tr>
+            <tr>
+                <td><code>padding</code></td>
+                <td>اندر کی جگہ</td>
+                <td><code>padding: 10px;</code></td>
+            </tr>
+            <tr>
+                <td><code>margin</code></td>
+                <td>باہر کی جگہ</td>
+                <td><code>margin: 20px;</code></td>
+            </tr>
+            <tr>
+                <td><code>border</code></td>
+                <td>بارڈر لگانا</td>
+                <td><code>border: 1px solid black;</code></td>
+            </tr>
+            <tr>
+                <td><code>width</code>/<code>height</code></td>
+                <td>چوڑائی اور لمبائی دینا</td>
+                <td><code>width: 100px;</code></td>
+            </tr>
+        </table>
+        
+        <h2>📌 CSS کا فائدہ:</h2>
+        <div class="benefits-list">
+            <ul>
+                <li>ایک ہی جگہ سے ساری ویب سائٹ کا ڈیزائن کنٹرول</li>
+                <li>HTML اور Style الگ الگ رہتے ہیں</li>
+                <li>ویب سائٹ خوبصورت اور پروفیشنل لگتی ہے</li>
+                <li>کوڈ کا دوبارہ استعمال ممکن ہوتا ہے</li>
+                <li>صفحات کا سائز کم ہوتا ہے</li>
+                <li>مختلف ڈیوائسز کے لیے مختلف اسٹائلز</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>باب 11: CSS کی بنیاد – HTML ویب سائٹ کو خوبصورت بنانا</p>
+            <p>© 2023 ویب ڈویلپمنٹ کورس - تمام حقوق محفوظ ہیں</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>باب 13: CSS Layouts – Box Model اور Flexbox کا استعمال</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Nafees Nastaleeq', 'Noto Nastaliq Urdu', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c5282;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #4a6baf;
+        }
+        
+        h2 {
+            color: #1a3a5f;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            background-color: #f0f7ff;
+            padding: 10px 15px;
+            border-right: 5px solid #2c5282;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .box-model-diagram {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .box-model-diagram .margin {
+            display: inline-block;
+            padding: 40px;
+            background-color: #e3f2fd;
+            border: 2px dashed #64b5f6;
+        }
+        
+        .box-model-diagram .border {
+            padding: 30px;
+            background-color: #bbdefb;
+            border: 2px solid #2196f3;
+        }
+        
+        .box-model-diagram .padding {
+            padding: 20px;
+            background-color: #90caf9;
+            border: 2px dashed #1565c0;
+        }
+        
+        .box-model-diagram .content {
+            padding: 30px;
+            background-color: #42a5f5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .box-model-label {
+            position: absolute;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .margin-label {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .border-label {
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+        
+        .padding-label {
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .content-label {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .properties-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .properties-table th, .properties-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+        
+        .properties-table th {
+            background-color: #2c5282;
+            color: white;
+        }
+        
+        .properties-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .code-example {
+            background-color: #2d3748;
+            color: #cbd5e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .code-tag {
+            color: #63b3ed;
+        }
+        
+        .code-attr {
+            color: #f6ad55;
+        }
+        
+        .code-text {
+            color: #a0aec0;
+        }
+        
+        .example-box {
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+            border: 1px solid #eaeaea;
+        }
+        
+        .flex-example {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .flex-example > div {
+            padding: 20px;
+            background-color: #4a6baf;
+            color: white;
+            border-radius: 4px;
+        }
+        
+        .flex-layout {
+            display: flex;
+            margin: 20px 0;
+            min-height: 200px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            background-color: #1a3a5f;
+            color: white;
+            padding: 20px;
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .main-content {
+            flex: 3;
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .reminder-box {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .reminder-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            color: #4a5568;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>باب 13: CSS Layouts – Box Model اور Flexbox کا استعمال</h1>
+        
+        <div class="section">
+            <h2>1. Box Model کیا ہے؟</h2>
+            <p>HTML کا ہر Element ایک <strong>box</strong> کی طرح ہوتا ہے۔</p>
+            
+            <div class="box-model-diagram">
+                <div class="margin">
+                    <div class="border">
+                        <div class="padding">
+                            <div class="content">
+                                Content
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-model-label margin-label">Margin</div>
+                <div class="box-model-label border-label">Border</div>
+                <div class="box-model-label padding-label">Padding</div>
+                <div class="box-model-label content-label">Content</div>
+            </div>
+            
+            <h3>Box Model میں 4 حصے ہوتے ہیں:</h3>
+            <table class="properties-table">
+                <tr>
+                    <th>خصوصیت</th>
+                    <th>مطلب</th>
+                </tr>
+                <tr>
+                    <td><code>margin</code></td>
+                    <td>Element کے باہر کی جگہ</td>
+                </tr>
+                <tr>
+                    <td><code>border</code></td>
+                    <td>باکس کا بارڈر</td>
+                </tr>
+                <tr>
+                    <td><code>padding</code></td>
+                    <td>Element کے اندر جگہ</td>
+                </tr>
+                <tr>
+                    <td><code>content</code></td>
+                    <td>اصل مواد (text/image)</td>
+                </tr>
+            </table>
+            
+            <h3>مثال:</h3>
+            <div class="code-example">
+&lt;div style="margin: 20px; border: 2px solid black; padding: 10px;"&gt;
+  Box Model کا عملی مظاہرہ
+&lt;/div&gt;
+            </div>
+            
+            <div class="example-box">
+                <div style="margin: 20px; border: 2px solid black; padding: 10px;">
+                    Box Model کا عملی مظاہرہ
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>2. Flexbox کیا ہے؟</h2>
+            <p>Flexbox سے آپ <strong>elements کو افقی یا عمودی لائن میں</strong> آسانی سے رکھ سکتے ہیں۔</p>
+            
+            <h3>Flexbox شروع کرنے کے لیے:</h3>
+            <div class="code-example">
+display: flex;
+            </div>
+            
+            <h3>اہم Flexbox Properties:</h3>
+            <table class="properties-table">
+                <tr>
+                    <th>خصوصیت</th>
+                    <th>کام</th>
+                </tr>
+                <tr>
+                    <td><code>display: flex;</code></td>
+                    <td>Flexbox کو فعال کرتا ہے</td>
+                </tr>
+                <tr>
+                    <td><code>flex-direction</code></td>
+                    <td><code>row</code> (default) یا <code>column</code></td>
+                </tr>
+                <tr>
+                    <td><code>justify-content</code></td>
+                    <td>Horizontal alignment (مرکز وغیرہ)</td>
+                </tr>
+                <tr>
+                    <td><code>align-items</code></td>
+                    <td>Vertical alignment</td>
+                </tr>
+            </table>
+            
+            <h3>مثال:</h3>
+            <div class="code-example">
+&lt;div style="display: flex; justify-content: space-around;"&gt;
+  &lt;div style="background: red; padding: 20px;"&gt;Box 1&lt;/div&gt;
+  &lt;div style="background: blue; padding: 20px;"&gt;Box 2&lt;/div&gt;
+  &lt;div style="background: green; padding: 20px;"&gt;Box 3&lt;/div&gt;
+&lt;/div&gt;
+            </div>
+            
+            <div class="example-box">
+                <div style="display: flex; justify-content: space-around;">
+                    <div style="background: red; padding: 20px; color: white;">Box 1</div>
+                    <div style="background: blue; padding: 20px; color: white;">Box 2</div>
+                    <div style="background: green; padding: 20px; color: white;">Box 3</div>
+                </div>
+            </div>
+            
+            <h3>Flexbox Layout Example: Sidebar + Content</h3>
+            <div class="code-example">
+&lt;div style="display: flex;"&gt;
+  &lt;div style="flex: 1; background: lightgray; padding: 20px;"&gt;
+    Sidebar
+  &lt;/div&gt;
+  &lt;div style="flex: 3; background: white; padding: 20px;"&gt;
+    Main Content
+  &lt;/div&gt;
+&lt;/div&gt;
+            </div>
+            
+            <div class="example-box">
+                <div class="flex-layout">
+                    <div class="sidebar">
+                        Sidebar
+                    </div>
+                    <div class="main-content">
+                        Main Content
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="reminder-box">
+            <div class="reminder-title">🧠 یاد رکھنے کی باتیں:</div>
+            <ul style="padding-right: 20px;">
+                <li>Flexbox کا استعمال Responsive Layout بنانے میں بہت آسان ہے</li>
+                <li><code>flex: 1</code>, <code>flex: 2</code>, <code>flex: 3</code> سے آپ سائز کنٹرول کر سکتے ہیں</li>
+                <li>Box Model سمجھنا ضروری ہے تاکہ spacing اور design ٹھیک رہے</li>
+                <li>Flexbox میں <code>direction: rtl</code> کا خیال رکھیں</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>باب 13: CSS Layouts – Box Model اور Flexbox کا استعمال</p>
+            <p>© 2023 ویب ڈویلپمنٹ کورس | تمام حقوق محفوظ ہیں</p>
+        </footer>
+    </div>
+</body>
+</html>
